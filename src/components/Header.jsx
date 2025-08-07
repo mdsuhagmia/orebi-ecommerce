@@ -31,8 +31,7 @@ const Header = () => {
        <div className="flex justify-between items-center">
 
         <div className="relative w-1/6 md:w-1/4 flex gap-x-2 cursor-pointer group">
-          <a className="hidden md:block" href="#"><FaEquals className="text-xl" /></a>
-          <a className="block md:hidden" href="#"><BiSolidCategory className="cursor-pointer" /></a>
+          <FaEquals className="text-xl cursor-pointer" />
           <p className="hidden md:block text-[#262626] text-[16px] font-dms font-medium">Shop by Category</p>
 
           <div className="bg-[#262626] py-3 w-[263px] absolute left-0 top-[48px] invisible group-hover:visible opacity-0 group-hover:opacity-100 duration-500 ease-in-out transition-all">

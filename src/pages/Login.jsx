@@ -25,11 +25,11 @@ const Login = () => {
             </li>
           </ul>
         </div>
-        <div className='w-1/2'>
+        <div className='w-full lg:w-1/2'>
           <p className='text-[#767676] text-[16px] font-medium font-dms py-[80px] leading-[30px]'>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the.</p>
           <h2 className='text-[#262626] text-[39px] md:text-[49px] font-bold font-dms pb-[42px]'>Returning Customer</h2>
           <form action="">
-            <div className='flex justify-between'>
+            <div className='md:flex justify-between'>
               <div className='pb-[30px] w-[48%]'>
                 <label
                   className='block text-[#262626] text-[18px] md:text-[16px] font-bold font-dms pb-[8px]'>
@@ -59,7 +59,7 @@ const Login = () => {
             </div>
           </form>
         </div>
-        <div className='w-1/2'>
+        <div className='w-full md:w-1/2'>
           <h2 className='text-[#262626] text-[39px] md:text-[49px] font-bold font-dms pb-[42px]'>New Customer</h2>
           <p className='text-[#767676] text-[16px] font-medium font-dms py-[30px] leading-[30px]'>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the.</p>
           <div className='pb-[80px] pt-4'>

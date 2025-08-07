@@ -26,7 +26,7 @@ const SignUp = () => {
           </ul>
         </div>
         <form action="">
-          <div className='w-1/2'>
+          <div className='w-full lg:w-1/2'>
             <p className='text-[#767676] text-[16px] font-medium font-dms py-[80px] leading-[30px]'>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the.</p>
             <h2 className='text-[#262626] text-[39px] md:text-[49px] font-bold font-dms pb-[42px]'>Your Personal Details</h2>
             <div className='flex justify-between'>
@@ -220,7 +220,7 @@ const SignUp = () => {
             <div className='flex justify-between'>
               <div className='pb-[30px] w-[48%]'>
                 <label
-                  className='block text-[#262626] text-[18px] md:text-[16px] font-bold font-dms pb-[8px]'>
+                  className='block text-[#262626] text-[17px] md:text-[16px] font-bold font-dms pb-[8px]'>
                   Password
                 </label>
                 <input type="password"
@@ -230,7 +230,7 @@ const SignUp = () => {
               </div>
               <div className='pb-[30px] w-[48%]'>
                 <label
-                  className='block text-[#262626] text-[18px] md:text-[16px] font-bold font-dms pb-[8px]'>
+                  className='block text-[#262626]  text-[17px] md:text-[16px] font-bold font-dms pb-[8px]'>
                   Repeat password
                 </label>
                 <input type="password"

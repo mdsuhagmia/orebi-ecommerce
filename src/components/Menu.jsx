@@ -46,11 +46,25 @@ const Menu = () => {
                     Contacts
                 </NavLink>
               </li>
-              <li className='pb-3 md:pb-0'>
+              <li className='pb-[2px] md:pb-0'>
                 <NavLink to={"/journal"} 
                   className={({isActive}) => `text-[14px] font-dms font-bold ${isActive ? "text-[#262626]" : "text-[#767676]"}`}
                   onClick={()=>setOpenMenu(false)}>
                     Journal
+                </NavLink>
+              </li>
+              <li className='md:hidden pb-[2px] md:pb-0'>
+                <NavLink to={"/login"}
+                  className={({ isActive }) => `text-[14px] font-dms font-bold ${isActive ? "text-[#262626]" : "text-[#767676]"}`}
+                  onClick={() => setOpenMenu(false)}>
+                    Login
+                </NavLink>
+              </li>
+              <li className='md:hidden pb-3 md:pb-0'>
+                <NavLink to={"/signup"}
+                  className={({ isActive }) => `text-[14px] font-dms font-bold ${isActive ? "text-[#262626]" : "text-[#767676]"}`}
+                    onClick={() => setOpenMenu(false)}>
+                    Sign Up
                 </NavLink>
               </li>
             </ul>
@@ -58,19 +72,17 @@ const Menu = () => {
           <div className='md:hidden' onClick={()=>setOpenMenu(!openMenu)}>
             {openMenu == true ? <IoCloseSharp className='text-2xl cursor-pointer' /> : <IoMenu className='text-2xl cursor-pointer' /> }
           </div>
-          <div>
+          <div className='hidden md:block'>
             <ul className='flex gap-4'>
               <li className='pb-3 md:pb-0'>
                 <NavLink to={"/login"}
-                  className={({isActive}) => `text-[14px] font-dms font-bold ${isActive ? "text-[#262626]" : "text-[#767676]"}`}
-                  onClick={()=>setOpenMenu(false)}>
+                  className={({isActive}) => `text-[14px] font-dms font-bold ${isActive ? "text-[#262626]" : "text-[#767676]"}`}>
                     Login
                 </NavLink>
               </li>
               <li className='pb-3 md:pb-0'>
                 <NavLink to={"/signup"} 
-                  className={({isActive}) => `text-[14px] font-dms font-bold ${isActive ? "text-[#262626]" : "text-[#767676]"}`}
-                  onClick={()=>setOpenMenu(false)}>
+                  className={({isActive}) => `text-[14px] font-dms font-bold ${isActive ? "text-[#262626]" : "text-[#767676]"}`}>
                     Sign Up
                 </NavLink>
               </li>

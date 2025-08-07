@@ -3,7 +3,7 @@ import Container from '../components/Container'
 import { NavLink } from 'react-router-dom'
 import { IoIosArrowForward, IoMdArrowDropdown, IoMdArrowDropup } from 'react-icons/io'
 import { HiViewGrid } from 'react-icons/hi'
-import { FaList } from 'react-icons/fa'
+import { FaEquals, FaList } from 'react-icons/fa'
 import { ApiData } from './ContextApi'
 import { FaPlus } from 'react-icons/fa6'
 
@@ -22,9 +22,9 @@ const Products = () => {
   }, [category])
   return (
     <>
-    <section className='py-[54px] md:py-[64px] lg:py-[80px]'>
+    <section className='py-[34px] md:py-[64px] lg:py-[80px]'>
       <Container>
-        <div className='pb-10 md:pb-16'>
+        <div className='pb-0 md:pb-16'>
           <h2 className='text-[#262626] text-[39px] md:text-[49px] font-bold font-dms pb-[2px]'>Products</h2>
           <ul className='flex'>
             <li>
@@ -43,10 +43,11 @@ const Products = () => {
           </ul>
         </div>
         <div className='flex'>
-          <div className='w-1/4'>
+          <div className='hidden md:block w-1/4'>
 
             <div className='pb-12 pr-12'>
-              <h4 className='text-[#262626] text-[20px] font-bold font-dms pb-[30px]'>Shop by Category</h4>
+              <h4 className='hidden md:block text-[#262626] text-[20px] font-bold font-dms pb-[30px]'>Shop by Category</h4>
+              <FaEquals className="md:hidden text-xl cursor-pointer mt-[12px]" />
               <div>
                 <ul>
                   <li className='py-2 flex justify-between items-center relative'>
@@ -212,42 +213,42 @@ const Products = () => {
             </div>
           </div>
 
-          <div className='w-3/4'>
+          <div className='w-full md:w-3/4'>
             <div className='flex items-center pb-[60px]'>
-              <div className='w-2/5'>
+              <div className='hidden md:block w-2/5'>
                 <div className='flex gap-6'>
                   <HiViewGrid className='text-white bg-black p-1 text-xl cursor-pointer' />
                   <FaList className='cursor-pointer' />
                 </div>
               </div>
-              <div className='w-2/5'>
+              <div className='hidden md:block w-2/5'>
                 <div className='flex items-center'>
                   <h6 className='pr-2'>Sort by:</h6>
                   <div className=''>
                     <input type="search" 
-                      className='h-[30px] w-[200px] border-1 border-[#00000036] outline-0 p-2 rounded-[3px]'
+                      className='h-[30px] w-[150px] lg:w-[200px] border-1 border-[#00000036] outline-0 p-2 rounded-[3px]'
                       placeholder='Search'/>
                   </div>
                 </div>
               </div>
-              <div className='w-1/5'>
+              <div className='hidden md:block w-1/5'>
                 <div className='flex items-center'>
                   <h6 className='pr-2'>Show:</h6>
                   <div className=''>
                     <input type="number" 
-                      className='h-[30px] w-full border-1 border-[#00000036] outline-0 p-2 rounded-[3px]'
+                      className='h-[30px] w-full lg:w-full border-1 border-[#00000036] outline-0 p-2 rounded-[3px]'
                       placeholder='00'/>
                   </div>
                 </div>
               </div>
             </div>
-            <div className='grid grid-cols-2 md:grid-cols-3 gap-4'>
+            <div className='grid grid-cols-2 md:grid-cols-3 gap-2 md:gap-4'>
               {data.map((item)=>(
-                <div className='h-[350px] w-full hover:shadow-2xl'>
+                <div className='h-[250px] sm:h-[400px] md:h-[300px] lg:h-[360px] w-full hover:shadow-2xl bg-gray-100'>
                   <a href="/about">
                     <img src={item.thumbnail} alt="" />
-                    <h1 className='font-dms font-bold text-[18px] pl-4'>{item.title}</h1>
-                    <h4 className='text-red-600 pl-4'>Price: {item.price}$</h4>
+                    <h1 className='font-dms font-bold text-[14px] md:text-[18px] sm:pl-4 pb-2'>{item.title}</h1>
+                    <h4 className='text-red-600 pb-2 sm:pl-4 md:pl-4'>Price: {item.price}$</h4>
                   </a>
                 </div>
               ))}

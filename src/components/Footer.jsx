@@ -1,7 +1,6 @@
 import React from 'react'
 import Container from './Container'
 import logo from '../assets/logo.png'
-import { NavLink } from 'react-router-dom'
 import { FaFacebookF, FaInstagram, FaLinkedinIn } from 'react-icons/fa'
 
 const Footer = () => {
@@ -90,7 +89,7 @@ const Footer = () => {
               </li>
             </ul>
           </div>
-          <div className='w-3/12 md:w-2/12'>
+          <div className='w-5/12 ms-auto  md:w-2/12'>
             <h4 className='text-[#262626] text-[12px] md:text-[16px] lg:text-[16px] font-bold font-dms pb-[8px] md:pb-[17px]'>HELP</h4>
             <ul>
               <li>
