@@ -1,14 +1,14 @@
 import React, { useContext, useEffect, useRef, useState } from 'react'
 import Container from '../components/Container'
 import { NavLink } from 'react-router-dom'
-import { IoIosArrowForward, } from 'react-icons/io'
+import { IoIosArrowForward } from 'react-icons/io'
 import { HiViewGrid } from 'react-icons/hi'
-import { FaEquals, FaList } from 'react-icons/fa'
+import { FaList } from 'react-icons/fa'
 import { ApiData } from './ContextApi'
 import Post from './Post'
 
 const Products = () => {
-  let info = useContext(ApiData)
+  let data = useContext(ApiData)
   let [category, setCategory] = useState(false)
   let [color, setColor] = useState(false)
   let [brand, setBrand] = useState(false)
@@ -40,9 +40,9 @@ const Products = () => {
   }, [category, color, brand, price])
   return (
     <>
-    <section className='py-[34px] md:py-[64px] lg:py-[80px]'>
+    <section className='py-[54px] md:py-[64px] lg:py-[80px]'>
       <Container>
-        <div className='pb-0 md:pb-16'>
+        <div className='pb-10 md:pb-16'>
           <h2 className='text-[#262626] text-[39px] md:text-[49px] font-bold font-dms pb-[2px]'>Products</h2>
           <ul className='flex'>
             <li>
@@ -60,7 +60,6 @@ const Products = () => {
             </li>
           </ul>
         </div>
-<<<<<<< HEAD
         <div className='flex justify-between'>
           <div className='w-[22%] pt-2'>
 
@@ -70,17 +69,6 @@ const Products = () => {
               <div className='py-4'>
                 <ul className=''>
                   <li className='py-2 hover:bg-gray-200 rounded-[5px]'>
-=======
-        <div className='flex'>
-          <div className='hidden md:block w-1/4'>
-
-            <div className='pb-12 pr-12'>
-              <h4 className='hidden md:block text-[#262626] text-[20px] font-bold font-dms pb-[30px]'>Shop by Category</h4>
-              <FaEquals className="md:hidden text-xl cursor-pointer mt-[12px]" />
-              <div>
-                <ul>
-                  <li className='py-2 flex justify-between items-center relative'>
->>>>>>> 8d64e5a8a05ecd0169836b876d68c890e621ef63
                     <a href="#"
                       className='text-[#767676] text-[16px] font-dms font-medium pl-4'>
                       Category 1
@@ -241,29 +229,24 @@ const Products = () => {
             </div>
           </div>
 
-<<<<<<< HEAD
           <div className='w-[75%]'>
-=======
-          <div className='w-full md:w-3/4'>
->>>>>>> 8d64e5a8a05ecd0169836b876d68c890e621ef63
             <div className='flex items-center pb-[60px]'>
-              <div className='hidden md:block w-2/5'>
+              <div className='w-2/5'>
                 <div className='flex gap-6'>
                   <HiViewGrid className='text-white bg-black p-1 text-xl cursor-pointer' />
                   <FaList className='cursor-pointer' />
                 </div>
               </div>
-              <div className='hidden md:block w-2/5'>
+              <div className='w-2/5'>
                 <div className='flex items-center'>
                   <h6 className='pr-2'>Sort by:</h6>
                   <div className=''>
                     <input type="search" 
-                      className='h-[30px] w-[150px] lg:w-[200px] border-1 border-[#00000036] outline-0 p-2 rounded-[3px]'
+                      className='h-[30px] w-[200px] border-1 border-[#00000036] outline-0 p-2 rounded-[3px]'
                       placeholder='Search'/>
                   </div>
                 </div>
               </div>
-<<<<<<< HEAD
               <div className='w-1/5'>
                 <div className='flex items-center justify-end'>
                   <h6 className='pr-2'>Show:</h6>
@@ -274,34 +257,11 @@ const Products = () => {
                       <option value="">12</option>
                       <option value="">15</option>
                     </select>
-=======
-              <div className='hidden md:block w-1/5'>
-                <div className='flex items-center'>
-                  <h6 className='pr-2'>Show:</h6>
-                  <div className=''>
-                    <input type="number" 
-                      className='h-[30px] w-full lg:w-full border-1 border-[#00000036] outline-0 p-2 rounded-[3px]'
-                      placeholder='00'/>
->>>>>>> 8d64e5a8a05ecd0169836b876d68c890e621ef63
                   </div>
                 </div>
               </div>
             </div>
-<<<<<<< HEAD
-            <Post info={info}/>
-=======
-            <div className='grid grid-cols-2 md:grid-cols-3 gap-2 md:gap-4'>
-              {data.map((item)=>(
-                <div className='h-[250px] sm:h-[400px] md:h-[300px] lg:h-[360px] w-full hover:shadow-2xl bg-gray-100'>
-                  <a href="/about">
-                    <img src={item.thumbnail} alt="" />
-                    <h1 className='font-dms font-bold text-[14px] md:text-[18px] sm:pl-4 pb-2'>{item.title}</h1>
-                    <h4 className='text-red-600 pb-2 sm:pl-4 md:pl-4'>Price: {item.price}$</h4>
-                  </a>
-                </div>
-              ))}
-            </div>
->>>>>>> 8d64e5a8a05ecd0169836b876d68c890e621ef63
+            <Post data={data}/>
           </div>
         </div>
       </Container>
