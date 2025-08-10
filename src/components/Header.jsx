@@ -77,12 +77,12 @@ const Header = () => {
             </div>
             {account &&
             <div className="absolute top-[32px] md:top-[42px] lg:top-[52px] right-[30px] md:right-[30px] lg:right-[35px]">
-              <div>
+              <div className="shadow-2xl">
                 <div className="mb-[-7px] md:mb-[8px] lg:mb-[19px]">
-                  <a className="bg-[#2B2B2B] text-white text-[8px] md:text-[12px] lg:text-[14px] font-bold font-dms px-[8px] py-[4px] md:px-[30px] md:py-[10px] lg:px-[40px] lg:py-[14px] hover:bg-white hover:text-[#2b2b2b] hover:shadow-2xl" href="/myaccount">My Account</a>
+                  <a className="bg-[#2B2B2B] text-white text-[8px] md:text-[12px] lg:text-[14px] font-bold font-dms px-[8px] py-[4px] md:px-[30px] md:py-[10px] lg:px-[40px] lg:py-[14px] hover:bg-white hover:text-[#2b2b2b]" href="/myaccount">My Account</a>
                 </div>
                 <div>
-                  <a className="bg-[#2b2b2b] text-[#fff] hover:bg-white hover:text-[#2b2b2b] text-[8px] md:text-[12px] lg:text-[14px] font-bold font-dms px-[15.5px] py-[4px] md:px-[41px] md:py-[10px] lg:px-[52.5px] lg:py-[14px] hover:shadow-2xl border-t-1 border-blue-500 hover:border-0" href="/">Log Out</a>
+                  <a className="bg-[#2b2b2b] text-[#fff] hover:bg-white hover:text-[#2b2b2b] text-[8px] md:text-[12px] lg:text-[14px] font-bold font-dms px-[15.5px] py-[4px] md:px-[41px] md:py-[10px] lg:px-[52.5px] lg:py-[14px]" href="/">Log Out</a>
                 </div>
               </div>
              </div>

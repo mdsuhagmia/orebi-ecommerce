@@ -6,6 +6,7 @@ import { HiViewGrid } from 'react-icons/hi'
 import { FaList } from 'react-icons/fa'
 import { ApiData } from './ContextApi'
 import Post from './Post'
+import Pagination from './Pagination'
 
 const Products = () => {
   let data = useContext(ApiData)
@@ -13,10 +14,12 @@ const Products = () => {
   let [color, setColor] = useState(false)
   let [brand, setBrand] = useState(false)
   let [price, setPrice] = useState(false)
+
   let categoryRef = useRef()
   let colorRef = useRef()
   let brandRef = useRef()
   let priceRef = useRef()
+
   useEffect(()=>{
     document.addEventListener("click", (e)=>{
       if(categoryRef.current.contains(e.target)){
@@ -38,6 +41,18 @@ const Products = () => {
     }
     })
   }, [category, color, brand, price])
+
+  let [perPage, setPerPage] = useState(6)
+  let [currentPage, setCurrentPage] = useState(3)
+
+  let lastPage = perPage * currentPage
+  let firstPage = lastPage - perPage
+  let allPage = data.slice(firstPage, lastPage)
+
+  let pageNumber = []
+  for(let i = 0; i < Math.ceil(data.length / perPage); i++){
+    pageNumber.push(i)
+  }
   return (
     <>
     <section className='py-[54px] md:py-[64px] lg:py-[80px]'>
@@ -261,7 +276,8 @@ const Products = () => {
                 </div>
               </div>
             </div>
-            <Post data={data}/>
+            <Post allPage={allPage}/>
+            <Pagination pageNumber={pageNumber}/>
           </div>
         </div>
       </Container>

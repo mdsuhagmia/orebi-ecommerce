@@ -2,10 +2,10 @@ import React from 'react'
 import { FaCartPlus, FaHeart } from 'react-icons/fa'
 import { MdAutorenew } from 'react-icons/md'
 
-const Post = ({data}) => {
+const Post = ({allPage}) => {
   return (
     <div className='grid grid-cols-2 md:grid-cols-3 gap-4'>
-      {data.map((item) => (
+      {allPage.map((item) => (
         <div className='h-[430px] w-full shadow-xl bg-gray-200 rounded-[5px]'>
           <div className='bg-[#ffffff] py-2 rounded-t-[5px] border-1 border-gray-200 relative group'>
             <img src={item.thumbnail} alt="" />
