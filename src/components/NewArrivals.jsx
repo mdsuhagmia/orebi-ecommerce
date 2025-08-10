@@ -73,7 +73,7 @@ const NewArrivals = () => {
             <div className='px-2'>
                 <div className='h-[370px] w-full shadow-xl bg-gray-200 rounded-[5px]'>
                   <div className='bg-[#ffffff] py-2 rounded-t-[5px] border-1 border-gray-200 relative group'>
-                   <Link to={"/shop"}>
+                   <Link to={"/shop"} target='_top'>
                     <img src={item.thumbnail} alt="" />
                    </Link>
                     <div className='absolute right-0 bottom-0 bg-white w-full opacity-0 group-hover:opacity-100 py-2'>
