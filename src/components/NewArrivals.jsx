@@ -1,10 +1,12 @@
 import React, { useContext, } from 'react'
 import Container from './Container'
 import Slider from 'react-slick';
-import { MdArrowBackIosNew, MdArrowForwardIos } from 'react-icons/md';
+import { MdArrowBackIosNew, MdArrowForwardIos, MdAutorenew } from 'react-icons/md';
 import { ApiData } from './ContextApi';
+import { Link } from 'react-router-dom';
+import { FaCartPlus, FaHeart } from 'react-icons/fa';
 
-const OldArrivals = () => {
+const NewArrivals = () => {
   let data = useContext(ApiData)
 
   function SampleNextArrow(props) {
@@ -69,11 +71,34 @@ const OldArrivals = () => {
          <Slider {...settings}>
           {data.map((item)=>(
             <div className='px-2'>
-              <a href="/shop">
-              <img src={item.thumbnail} alt="" className='px-4 bg-white' />
-              <h1 className='font-dms font-bold text-[18px]'>{item.title}</h1>
-              <p className='text-red-600'>price: {item.price}$</p>
-             </a>
+                <div className='h-[370px] w-full shadow-xl bg-gray-200 rounded-[5px]'>
+                  <div className='bg-[#ffffff] py-2 rounded-t-[5px] border-1 border-gray-200 relative group'>
+                   <Link to={"/shop"}>
+                    <img src={item.thumbnail} alt="" />
+                   </Link>
+                    <div className='absolute right-0 bottom-0 bg-white w-full opacity-0 group-hover:opacity-100 py-2'>
+                      <div className='pr-4'>
+                        <div className='flex items-center justify-end cursor-pointer text-[#767676] text-[16px] font-dms font-medium hover:text-[#262626]'>
+                          <p className='pr-2'>Add to Wish List</p>
+                          <FaHeart />
+                        </div>
+                      </div>
+                      <div className='pr-4 py-2'>
+                        <div className='flex items-center justify-end cursor-pointer text-[#767676] text-[16px] font-dms font-medium hover:text-[#262626]'>
+                          <p className='pr-2'>Compare</p>
+                          <MdAutorenew className='text-xl' />
+                        </div>
+                      </div>
+                      <div className='pr-4'>
+                        <div className='flex items-center justify-end cursor-pointer text-[#767676] text-[16px] font-dms font-medium hover:text-[#262626]'>
+                          <p className='pr-2'>Add to Cart</p>
+                          <FaCartPlus />
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <h1 className='font-dms font-bold text-[18px] pl-4 py-3'>{item.title}</h1>
+                </div>
             </div>
           ))}
         </Slider>
@@ -82,4 +107,4 @@ const OldArrivals = () => {
   )
 }
 
-export default OldArrivals
+export default NewArrivals
