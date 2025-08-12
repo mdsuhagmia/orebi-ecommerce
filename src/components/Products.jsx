@@ -43,7 +43,7 @@ const Products = () => {
   }, [category, color, brand, price])
 
   let [perPage, setPerPage] = useState(6)
-  let [currentPage, setCurrentPage] = useState(3)
+  let [currentPage, setCurrentPage] = useState(1)
 
   let lastPage = perPage * currentPage
   let firstPage = lastPage - perPage
@@ -76,10 +76,10 @@ const Products = () => {
           </ul>
         </div>
         <div className='flex justify-between'>
-          <div className='w-[22%] pt-2'>
+          <div className='hidden md:block w-[22%] pt-2'>
 
             <div className='pb-2 border-1 border-[#00000064] pt-2 rounded-[5px] mb-4'>
-              <h4 ref={categoryRef} className='text-[#262626] text-[20px] font-bold font-dms cursor-pointer hover:text-[#26262695] pl-2'>Shop by Category</h4>
+              <h4 ref={categoryRef} className='text-[#262626] text-[16px] lg:text-[20px] font-bold font-dms cursor-pointer hover:text-[#26262695] pl-2'>Shop by Category</h4>
               {category && (
               <div className='py-4'>
                 <ul className=''>
@@ -119,7 +119,7 @@ const Products = () => {
             </div>
 
             <div className='pb-2 border-1 border-[#00000064] pt-2 rounded-[5px] mb-4'>
-              <h4 ref={colorRef} className='text-[#262626] text-[20px] font-bold font-dms cursor-pointer hover:text-[#26262695] pl-2'>Shop by Color</h4>
+              <h4 ref={colorRef} className='text-[#262626] text-[16px] lg:text-[20px] font-bold font-dms cursor-pointer hover:text-[#26262695] pl-2'>Shop by Color</h4>
               {color && (
               <div className='py-4'>
                 <ul className=''>
@@ -164,7 +164,7 @@ const Products = () => {
             </div>
 
             <div className='pb-2 border-1 border-[#00000064] pt-2 rounded-[5px] mb-4'>
-              <h4 ref={brandRef} className='text-[#262626] text-[20px] font-bold font-dms cursor-pointer hover:text-[#26262695] pl-2'>Shop by Brand</h4>
+              <h4 ref={brandRef} className='text-[#262626] text-[16px] lg:text-[20px] font-bold font-dms cursor-pointer hover:text-[#26262695] pl-2'>Shop by Brand</h4>
               {brand && (
               <div className='py-4'>
                 <ul className=''>
@@ -204,7 +204,7 @@ const Products = () => {
             </div>
             
             <div className='pb-2 border-1 border-[#00000064] pt-2 rounded-[5px] mb-4'>
-              <h4 ref={priceRef} className='text-[#262626] text-[20px] font-bold font-dms cursor-pointer hover:text-[#26262695] pl-2'>Shop by Price</h4>
+              <h4 ref={priceRef} className='text-[#262626] text-[16px] lg:text-[20px] font-bold font-dms cursor-pointer hover:text-[#26262695] pl-2'>Shop by Price</h4>
               {price && (
               <div className='py-4'>
                 <ul className=''>
@@ -244,15 +244,15 @@ const Products = () => {
             </div>
           </div>
 
-          <div className='w-[75%]'>
-            <div className='flex items-center pb-[60px]'>
+          <div className='w-full md:w-[75%]'>
+            <div className='flex items-center justify-between pb-[60px]'>
               <div className='w-2/5'>
                 <div className='flex gap-6'>
                   <HiViewGrid className='text-white bg-black p-1 text-xl cursor-pointer' />
                   <FaList className='cursor-pointer' />
                 </div>
               </div>
-              <div className='w-2/5'>
+              <div className='hidden lg:block w-2/5'>
                 <div className='flex items-center'>
                   <h6 className='pr-2'>Sort by:</h6>
                   <div className=''>
