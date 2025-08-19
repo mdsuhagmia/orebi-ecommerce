@@ -71,7 +71,7 @@ const NewArrivals = () => {
          <Slider {...settings}>
           {data.map((item)=>(
             <div className='px-2 py-6'>
-                <div className='w-full shadow-xl bg-gray-200 rounded-[5px]'>
+                <div className='w-full min-h-[300px] md:min-h-[370px] shadow-xl bg-gray-200 rounded-[5px]'>
                   <div className='bg-[#ffffff] py-3 rounded-t-[5px] border-1 border-gray-200 relative group'>
                    <Link to={"/shop"} target='_top'>
                     <img src={item.thumbnail} alt="" className='w-full' />

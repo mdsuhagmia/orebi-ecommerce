@@ -10,37 +10,6 @@ import Pagination from './Pagination'
 
 const Products = () => {
   let data = useContext(ApiData)
-  let [category, setCategory] = useState(false)
-  let [color, setColor] = useState(false)
-  let [brand, setBrand] = useState(false)
-  let [price, setPrice] = useState(false)
-
-  let categoryRef = useRef()
-  let colorRef = useRef()
-  let brandRef = useRef()
-  let priceRef = useRef()
-
-  useEffect(()=>{
-    document.addEventListener("click", (e)=>{
-      if(categoryRef.current.contains(e.target)){
-      setCategory(!category)
-    }else{
-      setCategory(false)
-    }if(colorRef.current.contains(e.target)){
-      setColor(!color)
-    }else{
-      setColor(false)
-    }if(brandRef.current.contains(e.target)){
-      setBrand(!brand)
-    }else{
-      setBrand(false)
-    }if(priceRef.current.contains(e.target)){
-      setPrice(!price)
-    }else{
-      setPrice(false)
-    }
-    })
-  }, [category, color, brand, price])
 
   let [perPage, setPerPage] = useState(6)
   let [currentPage, setCurrentPage] = useState(1)
@@ -52,6 +21,37 @@ const Products = () => {
   let pageNumber = []
   for(let i = 0; i < Math.ceil(data.length / perPage); i++){
     pageNumber.push(i)
+  }
+
+  let Paginate = (pagiIndex)=>{
+    setCurrentPage(pagiIndex + 1)
+  }
+
+  let next = ()=>{
+    if(currentPage < pageNumber.length){
+      setCurrentPage((nextp)=> nextp + 1)
+    }
+  }
+
+  let prev = ()=>{
+    if(currentPage > 1){
+      setCurrentPage((nextp)=> nextp - 1)
+    }
+  }
+
+  let handleParPageShow = (e)=>{
+    setPerPage(e.target.value)
+  }
+
+  let [shopCategory, setShopCategory] = useState([])
+  useEffect(()=>{
+    setShopCategory([...new Set(data.map((item)=>item.category))])
+  }, [data])
+
+  let [filterShow, setFilterShow] = useState([])
+  let handleShopCategory = (citem) =>{
+    let categoryFilter = data.filter((item)=> item.category == citem)
+    setFilterShow(categoryFilter)
   }
   return (
     <>
@@ -76,51 +76,25 @@ const Products = () => {
           </ul>
         </div>
         <div className='flex justify-between'>
-          <div className='hidden md:block w-[22%] pt-2'>
+          <div className='hidden md:block w-[22%] pt-2 sticky top-0 h-screen overflow-y-auto'>
 
             <div className='pb-2 border-1 border-[#00000064] pt-2 rounded-[5px] mb-4'>
-              <h4 ref={categoryRef} className='text-[#262626] text-[16px] lg:text-[20px] font-bold font-dms cursor-pointer hover:text-[#26262695] pl-2'>Shop by Category</h4>
-              {category && (
+              <h4 className='text-[#262626] text-[16px] lg:text-[20px] font-bold font-dms pl-2'>Shop by Category</h4>
               <div className='py-4'>
                 <ul className=''>
-                  <li className='py-2 hover:bg-gray-200 rounded-[5px]'>
-                    <a href="#"
-                      className='text-[#767676] text-[16px] font-dms font-medium pl-4'>
-                      Category 1
-                    </a>
-                  </li>
-                  <li className='py-2 hover:bg-gray-200 rounded-[5px]'>
-                    <a href="#"
-                      className='text-[#767676] text-[16px] font-dms font-medium pl-4'>
-                      Category 1
-                    </a>
-                  </li>
-                  <li className='py-2 hover:bg-gray-200 rounded-[5px]'>
-                    <a href="#"
-                      className='text-[#767676] text-[16px] font-dms font-medium pl-4'>
-                      Category 1
-                    </a>
-                  </li>
-                  <li className='py-2 hover:bg-gray-200 rounded-[5px]'>
-                    <a href="#"
-                      className='text-[#767676] text-[16px] font-dms font-medium pl-4'>
-                      Category 1
-                    </a>
-                  </li>
-                  <li className='py-2 hover:bg-gray-200 rounded-[5px]'>
-                    <a href="#"
-                      className='text-[#767676] text-[16px] font-dms font-medium pl-4'>
-                      Category 1
-                    </a>
-                  </li>
+                  {shopCategory.map((item, index)=>(
+                    <li key={index}
+                      onClick={()=>handleShopCategory(item)}
+                      className="py-2 hover:bg-gray-200 rounded-[5px] text-[#767676] text-[16px] font-dms font-medium pl-4 cursor-pointer">
+                        {item}
+                    </li>
+                  ))}
                 </ul>
               </div>
-              )}
             </div>
 
             <div className='pb-2 border-1 border-[#00000064] pt-2 rounded-[5px] mb-4'>
-              <h4 ref={colorRef} className='text-[#262626] text-[16px] lg:text-[20px] font-bold font-dms cursor-pointer hover:text-[#26262695] pl-2'>Shop by Color</h4>
-              {color && (
+              <h4 className='text-[#262626] text-[16px] lg:text-[20px] font-bold font-dms cursor-pointer hover:text-[#26262695] pl-2'>Shop by Color</h4>
               <div className='py-4'>
                 <ul className=''>
                   <li className='py-2 hover:bg-gray-200 rounded-[5px] relative'>
@@ -160,12 +134,10 @@ const Products = () => {
                   </li>
                 </ul>
               </div>
-              )}
             </div>
 
             <div className='pb-2 border-1 border-[#00000064] pt-2 rounded-[5px] mb-4'>
-              <h4 ref={brandRef} className='text-[#262626] text-[16px] lg:text-[20px] font-bold font-dms cursor-pointer hover:text-[#26262695] pl-2'>Shop by Brand</h4>
-              {brand && (
+              <h4 className='text-[#262626] text-[16px] lg:text-[20px] font-bold font-dms cursor-pointer hover:text-[#26262695] pl-2'>Shop by Brand</h4>
               <div className='py-4'>
                 <ul className=''>
                   <li className='py-2 hover:bg-gray-200 rounded-[5px]'>
@@ -200,12 +172,10 @@ const Products = () => {
                   </li>
                 </ul>
               </div>
-              )}
             </div>
             
             <div className='pb-2 border-1 border-[#00000064] pt-2 rounded-[5px] mb-4'>
-              <h4 ref={priceRef} className='text-[#262626] text-[16px] lg:text-[20px] font-bold font-dms cursor-pointer hover:text-[#26262695] pl-2'>Shop by Price</h4>
-              {price && (
+              <h4 className='text-[#262626] text-[16px] lg:text-[20px] font-bold font-dms cursor-pointer hover:text-[#26262695] pl-2'>Shop by Price</h4>
               <div className='py-4'>
                 <ul className=''>
                   <li className='py-2 hover:bg-gray-200 rounded-[5px]'>
@@ -240,7 +210,6 @@ const Products = () => {
                   </li>
                 </ul>
               </div>
-              )}
             </div>
           </div>
 
@@ -255,29 +224,35 @@ const Products = () => {
               <div className='hidden lg:block w-2/5'>
                 <div className='flex items-center'>
                   <h6 className='pr-2'>Sort by:</h6>
-                  <div className=''>
-                    <input type="search" 
-                      className='h-[30px] w-[200px] border-1 border-[#00000036] outline-0 p-2 rounded-[3px]'
-                      placeholder='Search'/>
-                  </div>
+                  <select name="price" id="price" className='border-1 border-[#00000036] px-4 py-[3px] outline-0 rounded-[3px]'>
+                    <option value="Price">Price</option>
+                    <option value="LowtoHigh">Low to High</option>
+                    <option value="HightoLow">High to Low</option>
+                  </select>
                 </div>
               </div>
               <div className='w-1/5'>
                 <div className='flex items-center justify-end'>
                   <h6 className='pr-2'>Show:</h6>
                   <div className=''>
-                    <select name="" id="" className='border-1 border-[#00000036] px-4 py-[3px] outline-0 rounded-[3px]'>
-                      <option value="">6</option>
-                      <option value="">9</option>
-                      <option value="">12</option>
-                      <option value="">15</option>
+                    <select onChange={handleParPageShow} name="" id="" className='border-1 border-[#00000036] px-4 py-[3px] outline-0 rounded-[3px]'>
+                      <option value="6">6</option>
+                      <option value="9">9</option>
+                      <option value="12">12</option>
+                      <option value="15">15</option>
                     </select>
                   </div>
                 </div>
               </div>
             </div>
-            <Post allPage={allPage}/>
-            <Pagination pageNumber={pageNumber}/>
+            <Post allPage={allPage} filterShow={filterShow}/>
+            <Pagination 
+              pageNumber={pageNumber}
+              Paginate={Paginate}
+              next={next}
+              prev={prev}
+              currentPage={currentPage}
+              />
           </div>
         </div>
       </Container>

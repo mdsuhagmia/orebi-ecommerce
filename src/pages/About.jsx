@@ -2,6 +2,7 @@ import React from 'react'
 import { NavLink } from 'react-router-dom'
 import Container from '../components/Container'
 import { IoIosArrowForward } from 'react-icons/io'
+import ProductsDetails from '../components/ProductsDetails'
 
 const About = () => {
   return (

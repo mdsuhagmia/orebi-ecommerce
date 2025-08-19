@@ -17,12 +17,14 @@ import NotFound from "./pages/NotFound"
 import Logout from "./pages/Logout"
 import Checkout from "./pages/Checkout"
 import Cart from "./pages/Cart"
+import ProductsDetails from "./components/ProductsDetails"
 
 let routing = createBrowserRouter(createRoutesFromElements(
  <>
   <Route element={<RootLayout/>}>
     <Route path="/" element={<Home/>}></Route>
     <Route path="/shop" element={<Shop/>}></Route>
+    <Route path="/shop/products/:id" element={<ProductsDetails/>}></Route>
     <Route path="/about" element={<About/>}></Route>
     <Route path="/contacts" element={<Contacts/>}></Route>
     <Route path="/journal" element={<Journal/>}></Route>
