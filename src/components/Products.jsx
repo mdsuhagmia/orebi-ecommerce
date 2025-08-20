@@ -53,6 +53,17 @@ const Products = () => {
     let categoryFilter = data.filter((item)=> item.category == citem)
     setFilterShow(categoryFilter)
   }
+
+  let [brandList, setBrandList] =  useState([])
+  useEffect(()=>{
+    setBrandList([...new Set(data.map((item)=> item.brand))])
+  }, [data])
+
+  let [brandShow, setBrandShow] = useState([])
+  let handleBandCategory = (bitem)=>{
+    let brandFilter = data.filter((item)=> item.brand == bitem)
+    setBrandShow(brandFilter)
+  }
   return (
     <>
     <section className='py-[54px] md:py-[64px] lg:py-[80px]'>
@@ -85,7 +96,7 @@ const Products = () => {
                   {shopCategory.map((item, index)=>(
                     <li key={index}
                       onClick={()=>handleShopCategory(item)}
-                      className="py-2 hover:bg-gray-200 rounded-[5px] text-[#767676] text-[16px] font-dms font-medium pl-4 cursor-pointer">
+                      className="py-2 hover:bg-gray-200 rounded-[5px] text-[#767676] text-[16px] font-dms font-medium pl-4 cursor-pointer capitalize">
                         {item}
                     </li>
                   ))}
@@ -93,7 +104,7 @@ const Products = () => {
               </div>
             </div>
 
-            <div className='pb-2 border-1 border-[#00000064] pt-2 rounded-[5px] mb-4'>
+            {/* <div className='pb-2 border-1 border-[#00000064] pt-2 rounded-[5px] mb-4'>
               <h4 className='text-[#262626] text-[16px] lg:text-[20px] font-bold font-dms cursor-pointer hover:text-[#26262695] pl-2'>Shop by Color</h4>
               <div className='py-4'>
                 <ul className=''>
@@ -134,79 +145,36 @@ const Products = () => {
                   </li>
                 </ul>
               </div>
-            </div>
+            </div> */}
 
             <div className='pb-2 border-1 border-[#00000064] pt-2 rounded-[5px] mb-4'>
-              <h4 className='text-[#262626] text-[16px] lg:text-[20px] font-bold font-dms cursor-pointer hover:text-[#26262695] pl-2'>Shop by Brand</h4>
+              <h4 className='text-[#262626] text-[16px] lg:text-[20px] font-bold font-dms pl-2'>Shop by Brand</h4>
               <div className='py-4'>
                 <ul className=''>
-                  <li className='py-2 hover:bg-gray-200 rounded-[5px]'>
-                    <a href="#"
-                      className='text-[#767676] text-[16px] font-dms font-medium pl-4'>
-                      Brand 1
-                    </a>
+                {brandList.map((item)=>(
+                  <li onClick={()=>handleBandCategory(item)} className='py-2 hover:bg-gray-200 rounded-[5px] text-[#767676] text-[16px] font-dms font-medium pl-4 cursor-pointer'>
+                    {item}
                   </li>
-                  <li className='py-2 hover:bg-gray-200 rounded-[5px]'>
-                    <a href="#"
-                      className='text-[#767676] text-[16px] font-dms font-medium pl-4'>
-                      Brand 2
-                    </a>
-                  </li>
-                  <li className='py-2 hover:bg-gray-200 rounded-[5px]'>
-                    <a href="#"
-                      className='text-[#767676] text-[16px] font-dms font-medium pl-4'>
-                      Brand 3
-                    </a>
-                  </li>
-                  <li className='py-2 hover:bg-gray-200 rounded-[5px]'>
-                    <a href="#"
-                      className='text-[#767676] text-[16px] font-dms font-medium pl-4'>
-                      Brand 4
-                    </a>
-                  </li>
-                  <li className='py-2 hover:bg-gray-200 rounded-[5px]'>
-                    <a href="#"
-                      className='text-[#767676] text-[16px] font-dms font-medium pl-4'>
-                      Brand 5
-                    </a>
-                  </li>
+                ))}
                 </ul>
               </div>
             </div>
             
             <div className='pb-2 border-1 border-[#00000064] pt-2 rounded-[5px] mb-4'>
-              <h4 className='text-[#262626] text-[16px] lg:text-[20px] font-bold font-dms cursor-pointer hover:text-[#26262695] pl-2'>Shop by Price</h4>
+              <h4 className='text-[#262626] text-[16px] lg:text-[20px] font-bold font-dms pl-2'>Shop by Price</h4>
               <div className='py-4'>
                 <ul className=''>
-                  <li className='py-2 hover:bg-gray-200 rounded-[5px]'>
-                    <a href="#"
-                      className='text-[#767676] text-[16px] font-dms font-medium pl-4'>
-                      $0.00 - $9.99
-                    </a>
+                  <li className='py-2 hover:bg-gray-200 rounded-[5px] text-[#767676] text-[16px] font-dms font-medium pl-4 cursor-pointer'>
+                    $0.00 - $9.99
                   </li>
-                  <li className='py-2 hover:bg-gray-200 rounded-[5px]'>
-                    <a href="#"
-                      className='text-[#767676] text-[16px] font-dms font-medium pl-4'>
-                      $10.00 - $19.99
-                    </a>
+                  <li className='py-2 hover:bg-gray-200 rounded-[5px] text-[#767676] text-[16px] font-dms font-medium pl-4 cursor-pointer'>
+                    $10.00 - $19.99
                   </li>
-                  <li className='py-2 hover:bg-gray-200 rounded-[5px]'>
-                    <a href="#"
-                      className='text-[#767676] text-[16px] font-dms font-medium pl-4'>
-                      $20.00 - $29.99
-                    </a>
+                  <li className='py-2 hover:bg-gray-200 rounded-[5px] text-[#767676] text-[16px] font-dms font-medium pl-4 cursor-pointer'>
+                    $20.00 - $29.99
                   </li>
-                  <li className='py-2 hover:bg-gray-200 rounded-[5px]'>
-                    <a href="#"
-                      className='text-[#767676] text-[16px] font-dms font-medium pl-4'>
-                      $30.00 - $39.99
-                    </a>
-                  </li>
-                  <li className='py-2 hover:bg-gray-200 rounded-[5px]'>
-                    <a href="#"
-                      className='text-[#767676] text-[16px] font-dms font-medium pl-4'>
-                      $40.00 - $69.99
-                    </a>
+                  <li className='py-2 hover:bg-gray-200 rounded-[5px] text-[#767676] text-[16px] font-dms font-medium pl-4 cursor-pointer'>
+                    $30.00 - $39.99
                   </li>
                 </ul>
               </div>
@@ -245,7 +213,9 @@ const Products = () => {
                 </div>
               </div>
             </div>
-            <Post allPage={allPage} filterShow={filterShow}/>
+            <Post allPage={allPage}
+              filterShow={filterShow}
+              brandShow={brandShow}/>
             <Pagination 
               pageNumber={pageNumber}
               Paginate={Paginate}

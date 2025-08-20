@@ -37,7 +37,9 @@ const Header = () => {
        <div className="flex justify-between items-center">
 
         <div className="relative w-1/6 md:w-1/4 flex gap-x-2 cursor-pointer group">
-          <div ref={mobileCategoryRef}><FaEquals  className="text-xl cursor-pointer relative" /></div>
+          <div ref={mobileCategoryRef}>
+            <FaEquals  className="text-xl cursor-pointer relative" />
+          </div>
           <p className="hidden md:block text-[#262626] text-[16px] font-dms font-medium">Shop by Category</p>
 
           {mobileCategory && 
@@ -49,19 +51,19 @@ const Header = () => {
           <div className="hidden md:block bg-[#262626] py-3 w-[263px] absolute left-0 top-[48px] invisible group-hover:visible opacity-0 group-hover:opacity-100 duration-500 ease-in-out transition-all rounded-b-[5px]">
             <ul>
               <li className="py-1 cursor-pointer text-[rgba(255,255,255,0.7)] text-[14px] font-dms font-bold pl-3 hover:text-white hover:pl-6 duration-500 ease-in-out">
-                <a href="#">Accesories</a>
+                Accesories
               </li>
               <li className="py-1 cursor-pointer text-[rgba(255,255,255,0.7)] text-[14px] font-dms font-bold pl-3 hover:text-white hover:pl-6 duration-500 ease-in-out">
-                <a href="#">Furniture</a>
+                Furniture
               </li>
               <li className="py-1 cursor-pointer text-[rgba(255,255,255,0.7)] text-[14px] font-dms font-bold pl-3 hover:text-white hover:pl-6 duration-500 ease-in-out">
-                <a href="#">Electronics</a>
+                Electronics
               </li>
               <li className="py-1 cursor-pointer text-[rgba(255,255,255,0.7)] text-[14px] font-dms font-bold pl-3 hover:text-white hover:pl-6 duration-500 ease-in-out">
-                <a href="#">Clothes</a>
+                Clothes
               </li>
               <li className="py-1 cursor-pointer text-[rgba(255,255,255,0.7)] text-[14px] font-dms font-bold pl-3 hover:text-white hover:pl-6 duration-500 ease-in-out">
-                <a href="#">Bags</a>
+                Bags
               </li>
             </ul>
           </div>
