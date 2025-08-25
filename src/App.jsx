@@ -38,7 +38,7 @@ let routing = createBrowserRouter(createRoutesFromElements(
       <Route path="downloads" element={<Downloads />} />
       <Route path="addresses" element={<Addresses />} />
       <Route path="accountdetails" element={<AccountDetails />} />
-      <Route path="logout" element={<Logout/>}></Route>
+      <Route path="logout" element={<Logout/>} />
     </Route>
   </Route>
        {/* RootLayout out */}

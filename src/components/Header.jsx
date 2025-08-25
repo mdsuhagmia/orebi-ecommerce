@@ -2,9 +2,9 @@ import { IoCloseOutline, IoSearch } from "react-icons/io5";
 import Container from "./Container";
 import { FaEquals, FaUser } from "react-icons/fa6";
 import { FaShoppingCart } from "react-icons/fa";
-import { useEffect, useRef, useState } from "react";
-import MobileCategory from "./MobileCategory";
+import { useContext, useEffect, useRef, useState } from "react";
 import mask from '../assets/mask.png'
+import { ApiData } from "./ContextApi";
 
 
 const Header = () => {
@@ -31,40 +31,45 @@ const Header = () => {
       }
     })
   }, [cart, account, mobileCategory])
+
+
+  let data = useContext(ApiData)
+  let [shopCategory, setShopCategory] = useState([])
+  useEffect(()=>{
+    setShopCategory([...new Set(data.map((item)=>item.category))])
+  }, [data])
+
   return (
     <header className="bg-[#F5F5F3] py-4">
       <Container>
        <div className="flex justify-between items-center">
 
         <div className="relative w-1/6 md:w-1/4 flex gap-x-2 cursor-pointer group">
-          <div ref={mobileCategoryRef}>
+            <FaEquals  className="hidden md:block text-xl cursor-pointer relative" />
+          <div ref={mobileCategoryRef} className="block md:hidden">
             <FaEquals  className="text-xl cursor-pointer relative" />
           </div>
           <p className="hidden md:block text-[#262626] text-[16px] font-dms font-medium">Shop by Category</p>
 
           {mobileCategory && 
-            <div className="absolute top-[46px] left-0">
-            <MobileCategory/>
+            <div className="absolute top-[46px] left-0 z-[9999]">
+              <ul className="bg-[#262626] py-2 rounded-b-[5px]">
+                  {shopCategory.map((item) => (
+                    <li className="py-1 pr-8 cursor-pointer text-[rgba(255,255,255,0.7)] text-[12px] font-dms font-bold pl-3 hover:text-white  capitalize">
+                      {item}
+                    </li>
+                  ))}
+              </ul>
           </div>
           }
 
           <div className="hidden md:block bg-[#262626] py-3 w-[263px] absolute left-0 top-[48px] invisible group-hover:visible opacity-0 group-hover:opacity-100 duration-500 ease-in-out transition-all rounded-b-[5px]">
             <ul>
-              <li className="py-1 cursor-pointer text-[rgba(255,255,255,0.7)] text-[14px] font-dms font-bold pl-3 hover:text-white hover:pl-6 duration-500 ease-in-out">
-                Accesories
+              {shopCategory.map((item)=>(
+              <li className="py-1 cursor-pointer text-[rgba(255,255,255,0.7)] text-[14px] font-dms font-bold pl-3 hover:text-white hover:pl-6 duration-500 ease-in-out capitalize">
+                {item}
               </li>
-              <li className="py-1 cursor-pointer text-[rgba(255,255,255,0.7)] text-[14px] font-dms font-bold pl-3 hover:text-white hover:pl-6 duration-500 ease-in-out">
-                Furniture
-              </li>
-              <li className="py-1 cursor-pointer text-[rgba(255,255,255,0.7)] text-[14px] font-dms font-bold pl-3 hover:text-white hover:pl-6 duration-500 ease-in-out">
-                Electronics
-              </li>
-              <li className="py-1 cursor-pointer text-[rgba(255,255,255,0.7)] text-[14px] font-dms font-bold pl-3 hover:text-white hover:pl-6 duration-500 ease-in-out">
-                Clothes
-              </li>
-              <li className="py-1 cursor-pointer text-[rgba(255,255,255,0.7)] text-[14px] font-dms font-bold pl-3 hover:text-white hover:pl-6 duration-500 ease-in-out">
-                Bags
-              </li>
+              ))}
             </ul>
           </div>
           

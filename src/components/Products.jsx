@@ -2,11 +2,11 @@ import React, { useContext, useEffect, useRef, useState } from 'react'
 import Container from '../components/Container'
 import { NavLink } from 'react-router-dom'
 import { IoIosArrowForward } from 'react-icons/io'
-import { HiViewGrid } from 'react-icons/hi'
 import { FaList } from 'react-icons/fa'
 import { ApiData } from './ContextApi'
 import Post from './Post'
 import Pagination from './Pagination'
+import { TfiLayoutGrid2Alt } from 'react-icons/tfi'
 
 const Products = () => {
   let data = useContext(ApiData)
@@ -64,6 +64,11 @@ const Products = () => {
     let brandFilter = data.filter((item)=> item.brand == bitem)
     setBrandShow(brandFilter)
   }
+
+  let [listView, setListView] = useState("")
+  let handleListView = ()=>{
+    setListView("active")
+  }
   return (
     <>
     <section className='py-[54px] md:py-[64px] lg:py-[80px]'>
@@ -93,60 +98,20 @@ const Products = () => {
               <h4 className='text-[#262626] text-[16px] lg:text-[20px] font-bold font-dms pl-2'>Shop by Category</h4>
               <div className='py-4'>
                 <ul className=''>
+                  <li onClick={()=>setFilterShow("")}
+                    className="py-2 hover:bg-gray-200 rounded-[5px] text-[#767676] text-[16px] font-dms font-medium pl-4 cursor-pointer capitalize">
+                      All Products
+                  </li>
                   {shopCategory.map((item, index)=>(
                     <li key={index}
                       onClick={()=>handleShopCategory(item)}
-                      className="py-2 hover:bg-gray-200 rounded-[5px] text-[#767676] text-[16px] font-dms font-medium pl-4 cursor-pointer capitalize">
+                      className={`py-2 hover:bg-gray-200 rounded-[5px] text-[#767676] text-[16px] font-dms font-medium pl-4 cursor-pointer capitalize`}>
                         {item}
                     </li>
                   ))}
                 </ul>
               </div>
             </div>
-
-            {/* <div className='pb-2 border-1 border-[#00000064] pt-2 rounded-[5px] mb-4'>
-              <h4 className='text-[#262626] text-[16px] lg:text-[20px] font-bold font-dms cursor-pointer hover:text-[#26262695] pl-2'>Shop by Color</h4>
-              <div className='py-4'>
-                <ul className=''>
-                  <li className='py-2 hover:bg-gray-200 rounded-[5px] relative'>
-                    <div className="absolute top-[50%] translate-y-[-50%] left-4 after:content-[''] after:block after:w-[12px] after:h-[12px] after:rounded-full after:bg-black"></div>
-                    <a href="#"
-                      className='text-[#767676] text-[16px] font-dms font-medium pl-12'>
-                     Color 1
-                    </a>
-                  </li>
-                  <li className='relative py-2 hover:bg-gray-200 rounded-[5px]'>
-                    <div className="absolute top-[50%] translate-y-[-50%] left-4 after:content-[''] after:block after:w-[12px] after:h-[12px] after:rounded-full after:bg-[#FF8686]"></div>
-                    <a href="#"
-                      className='text-[#767676] text-[16px] font-dms font-medium pl-12'>
-                      Color 2
-                    </a>
-                  </li>
-                  <li className='relative py-2 hover:bg-gray-200 rounded-[5px]'>
-                    <div className="absolute top-[50%] translate-y-[-50%] left-4 after:content-[''] after:block after:w-[12px] after:h-[12px] after:rounded-full after:bg-[#7ED321]"></div>
-                    <a href="#"
-                      className='text-[#767676] text-[16px] font-dms font-medium pl-12'>
-                      Color 3
-                    </a>
-                  </li>
-                  <li className='relative py-2 hover:bg-gray-200 rounded-[5px]'>
-                    <div className="absolute top-[50%] translate-y-[-50%] left-4 after:content-[''] after:block after:w-[12px] after:h-[12px] after:rounded-full after:bg-[#B6B6B6]"></div>
-                    <a href="#"
-                      className='text-[#767676] text-[16px] font-dms font-medium pl-12'>
-                      Color 4
-                    </a>
-                  </li>
-                  <li className='relative py-2 hover:bg-gray-200 rounded-[5px]'>
-                    <div className="absolute top-[50%] translate-y-[-50%] left-4 after:content-[''] after:block after:w-[12px] after:h-[12px] after:rounded-full after:bg-[#15CBA5]"></div>
-                    <a href="#"
-                      className='text-[#767676] text-[16px] font-dms font-medium pl-12'>
-                      Color 5
-                    </a>
-                  </li>
-                </ul>
-              </div>
-            </div> */}
-
             <div className='pb-2 border-1 border-[#00000064] pt-2 rounded-[5px] mb-4'>
               <h4 className='text-[#262626] text-[16px] lg:text-[20px] font-bold font-dms pl-2'>Shop by Brand</h4>
               <div className='py-4'>
@@ -165,15 +130,6 @@ const Products = () => {
               <div className='py-4'>
                 <ul className=''>
                   <li className='py-2 hover:bg-gray-200 rounded-[5px] text-[#767676] text-[16px] font-dms font-medium pl-4 cursor-pointer'>
-                    $0.00 - $9.99
-                  </li>
-                  <li className='py-2 hover:bg-gray-200 rounded-[5px] text-[#767676] text-[16px] font-dms font-medium pl-4 cursor-pointer'>
-                    $10.00 - $19.99
-                  </li>
-                  <li className='py-2 hover:bg-gray-200 rounded-[5px] text-[#767676] text-[16px] font-dms font-medium pl-4 cursor-pointer'>
-                    $20.00 - $29.99
-                  </li>
-                  <li className='py-2 hover:bg-gray-200 rounded-[5px] text-[#767676] text-[16px] font-dms font-medium pl-4 cursor-pointer'>
                     $30.00 - $39.99
                   </li>
                 </ul>
@@ -184,9 +140,13 @@ const Products = () => {
           <div className='w-full md:w-[75%]'>
             <div className='flex items-center justify-between pb-[60px]'>
               <div className='w-2/5'>
-                <div className='flex gap-6'>
-                  <HiViewGrid className='text-white bg-black p-1 text-xl cursor-pointer' />
-                  <FaList className='cursor-pointer' />
+                <div className='flex items-center gap-6'>
+                  <TfiLayoutGrid2Alt
+                    onClick={()=>setListView("")}
+                    className={`cursor-pointer ${listView == "" ? "text-white p-[8px] rounded-[5px] text-3xl bg-blue-500" : "text-black p-[8px] rounded-[5px] text-3xl bg-blue-50" }`} />
+                  <FaList 
+                    onClick={handleListView}
+                    className={`cursor-pointer ${listView == "active" ? "text-white p-[8px] rounded-[5px] text-3xl bg-blue-500" : "text-black p-[8px] rounded-[5px] text-3xl bg-blue-50" }`} />
                 </div>
               </div>
               <div className='hidden lg:block w-2/5'>
@@ -215,7 +175,8 @@ const Products = () => {
             </div>
             <Post allPage={allPage}
               filterShow={filterShow}
-              brandShow={brandShow}/>
+              brandShow={brandShow}
+              listView={listView}/>
             <Pagination 
               pageNumber={pageNumber}
               Paginate={Paginate}
