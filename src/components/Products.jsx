@@ -30,12 +30,14 @@ const Products = () => {
   let next = ()=>{
     if(currentPage < pageNumber.length){
       setCurrentPage((nextp)=> nextp + 1)
+      window.scrollTo({top: 0, behavior: 'smooth'})
     }
   }
 
   let prev = ()=>{
     if(currentPage > 1){
       setCurrentPage((nextp)=> nextp - 1)
+      window.scrollTo({top: 0, behavior: 'smooth'})
     }
   }
 
