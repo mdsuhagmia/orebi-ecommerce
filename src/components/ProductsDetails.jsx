@@ -89,7 +89,9 @@ const ProductsDetails = () => {
               <div >
                 <div className='flex items-center justify-between' >
                   <h2 onClick={handleDetails} className='text-[#262626] text-[16px] font-bold font-dms'>FEATURES  & DETAILS</h2>
-                  <FaPlus onClick={handleDetails} className='cursor-pointer' />
+                  <div onClick={handleDetails} className='cursor-pointer'>
+                    {show == true ? <FaMinus /> : <FaPlus  /> }
+                  </div>
                 </div>
                 {show == true ? <p className='text-[#767676] text-[14px] font-dms font-medium py-3 pl-4'>{singleProduct.description}</p> : "" }
               </div>
@@ -98,7 +100,9 @@ const ProductsDetails = () => {
               <div >
                 <div className='flex items-center justify-between' >
                   <h2 onClick={handleShipping} className='text-[#262626] text-[16px] font-bold font-dms'>SHIPPING & RETURNS</h2>
-                  <FaPlus onClick={handleShipping} className='cursor-pointer' />
+                  <div onClick={handleShipping} className='cursor-pointer'>
+                    {shippingShow == true ? <FaMinus /> : <FaPlus  /> }
+                  </div>
                 </div>
                 {shippingShow == true ? <div>
                  <div className='flex items-center gap-x-2 pl-4'>
