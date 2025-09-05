@@ -1,14 +1,39 @@
 import React from 'react'
-import bg from '../../public/group.png'
 import Container from './Container'
 import { CiDeliveryTruck } from 'react-icons/ci'
 import { IoReloadOutline } from 'react-icons/io5'
+import Slider from 'react-slick'
+import bg from '../assets/group.png'
 
 const Banner = () => {
+  const settings = {
+    dots: true,
+    infinite: true,
+    arrows: false,
+    speed: 500,
+    slidesToShow: 1,
+    slidesToScroll: 1
+  };
   return (
     <>
     <section className="">
-      <a href="/shop"><img src={bg} alt="" className='w-full' /></a>
+      <Slider {...settings} className='ban_bg'>
+        <div>
+          <a href="/shop">
+            <img src={bg} alt="" lassName='w-full' />
+          </a>
+        </div>
+        <div>
+          <a href="/shop">
+            <img src={bg} alt="" className='w-full' />
+          </a>
+        </div>
+        <div>
+          <a href="/shop">
+            <img src={bg} alt="" className='w-full' />
+          </a>
+        </div>
+      </Slider>
     </section>
     <section className='bg-[#fff] py-4'>
       <Container>

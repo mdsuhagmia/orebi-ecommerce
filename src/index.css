@@ -6,3 +6,26 @@
   --font-dms: "DM Sans", sans-serif; 
   --breakpoint-xs: 30rem;
 }
+
+.ban_bg .slick-dots{
+  position: absolute;
+  top: 50%;
+  left: 10%;
+  transform: translateY(-50%);
+  height: 78px;
+  width: 4px;
+  background-color: white;
+  margin-left: 20px;
+}
+.ban_bg .slick-dots li button{
+  color: transparent;
+  margin-left: -20px;
+}
+.ban_bg .slick-dots li.slick-active button{
+  color: black;
+}
+.ban_bg .slick-dots li.slick-active{
+  width: 4px;
+  height: 30px;
+  background: #000;
+}
