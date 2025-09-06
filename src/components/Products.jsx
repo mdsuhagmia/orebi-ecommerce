@@ -30,14 +30,14 @@ const Products = () => {
   let next = ()=>{
     if(currentPage < pageNumber.length){
       setCurrentPage((nextp)=> nextp + 1)
-      window.scrollTo({top: 0, behavior: 'smooth'})
+      // window.scrollTo({top: 0, behavior: 'smooth'})
     }
   }
 
   let prev = ()=>{
     if(currentPage > 1){
       setCurrentPage((nextp)=> nextp - 1)
-      window.scrollTo({top: 0, behavior: 'smooth'})
+      // window.scrollTo({top: 0, behavior: 'smooth'})
     }
   }
 
@@ -48,6 +48,7 @@ const Products = () => {
   let [shopCategory, setShopCategory] = useState([])
   useEffect(()=>{
     setShopCategory([...new Set(data.map((item)=>item.category))])
+    setBrandShow([...new Set(data.map((item)=>item.brand))])
   }, [data])
 
   let [filterShow, setFilterShow] = useState([])
@@ -56,15 +57,10 @@ const Products = () => {
     setFilterShow(categoryFilter)
   }
 
-  let [brandList, setBrandList] =  useState([])
-  useEffect(()=>{
-    setBrandList([...new Set(data.map((item)=> item.brand))])
-  }, [data])
-
   let [brandShow, setBrandShow] = useState([])
   let handleBandCategory = (bitem)=>{
     let brandFilter = data.filter((item)=> item.brand == bitem)
-    setBrandShow(brandFilter)
+    setFilterShow(brandFilter)
   }
 
   let [listView, setListView] = useState("")
@@ -118,7 +114,7 @@ const Products = () => {
               <h4 className='text-[#262626] text-[16px] lg:text-[20px] font-bold font-dms pl-2'>Shop by Brand</h4>
               <div className='py-4'>
                 <ul className=''>
-                {brandList.map((item)=>(
+                {brandShow.map((item)=>(
                   <li onClick={()=>handleBandCategory(item)} className='py-2 hover:bg-gray-200 rounded-[5px] text-[#767676] text-[16px] font-dms font-medium pl-4 cursor-pointer'>
                     {item}
                   </li>
@@ -185,7 +181,7 @@ const Products = () => {
               next={next}
               prev={prev}
               currentPage={currentPage}
-              />
+              filterShow={filterShow}/>
           </div>
         </div>
       </Container>

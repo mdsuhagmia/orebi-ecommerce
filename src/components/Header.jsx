@@ -40,7 +40,7 @@ const Header = () => {
   }, [data])
 
   return (
-    <header className="bg-[#F5F5F3] py-4">
+    <header className="bg-[#F5F5F3] py-4 select-none">
       <Container>
        <div className="flex justify-between items-center">
 
@@ -63,7 +63,7 @@ const Header = () => {
           </div>
           }
 
-          <div className="hidden md:block bg-[#262626] py-3 w-[263px] absolute left-0 top-[48px] invisible group-hover:visible opacity-0 group-hover:opacity-100 duration-500 ease-in-out transition-all rounded-b-[5px]">
+          <div className="hidden md:block bg-[#262626] py-3 w-[263px] absolute left-0 top-[48px] invisible group-hover:visible opacity-0 group-hover:opacity-100 duration-500 ease-in-out transition-all rounded-b-[5px] z-[9999]">
             <ul>
               {shopCategory.map((item)=>(
               <li className="py-1 cursor-pointer text-[rgba(255,255,255,0.7)] text-[14px] font-dms font-bold pl-3 hover:text-white hover:pl-6 duration-500 ease-in-out capitalize">
@@ -93,7 +93,7 @@ const Header = () => {
             <div ref={accountRef} className="relative">
               <FaUser className="cursor-pointer"  />
                 {account &&
-                  <div className="absolute top-[44px] right-0">
+                  <div className="absolute top-[44px] right-0 z-[9999]">
                     <ul className="shadow-2xl bg-[#262626] w-[100px] md:w-[160px] h-[46px] md:h-[80px] rounded-b-[5px]">
                       <li className="w-full h-[50%] flex items-center justify-center hover:bg-white group transition-all duration-300 ease-in-out">
                         <a className="text-white text-[10px] md:text-[14px] font-bold font-dms group-hover:text-[#262626] hover:text-blue-500" href="/myaccount">My Account</a>
@@ -112,7 +112,7 @@ const Header = () => {
               <FaShoppingCart className="cursor-pointer" />
                 {cart &&
                   <div 
-                    className="absolute top-[44px] right-0 bg-white shadow-2xl w-[200px] lg:w-[360px] rounded-b-[5px]">
+                    className="absolute top-[44px] right-0 bg-white shadow-2xl w-[200px] lg:w-[360px] rounded-b-[5px] z-[9999]">
                     <div 
                       className="bg-[#F5F5F3] w-full flex justify-between">
                       <div className="w-1/4 m-2 lg:m-4">

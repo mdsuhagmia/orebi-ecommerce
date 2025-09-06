@@ -11,15 +11,15 @@ const BanDown = () => {
         <div className='flex gap-x-2 md:gap-x-4 lg:gap-x-6'>
           <div className='w-1/2'>
             <div>
-              <a href="#"><img src={bandown1} alt="" className='w-full' /></a>
+              <a href="#"><img src={bandown1} alt="" className='w-full rounded-[8px]' /></a>
             </div>
           </div>
           <div className='w-1/2'>
             <div className='pb-[4%]'>
-              <a href="#"><img src={bandown2} alt="" className='w-full h-[48%]' /></a>
+              <a href="#"><img src={bandown2} alt="" className='w-full h-[48%] rounded-[8px]' /></a>
             </div>
             <div>
-              <a href="#"><img src={bandown3} alt="" className='w-full h-[48%]' /></a>
+              <a href="#"><img src={bandown3} alt="" className='w-full h-[48%] rounded-[8px]' /></a>
             </div>
           </div>
         </div>

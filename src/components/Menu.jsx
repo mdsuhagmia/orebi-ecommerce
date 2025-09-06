@@ -8,7 +8,7 @@ const Menu = () => {
   let [openMenu, setOpenMenu] = useState(false)
   return (
     <>
-    <nav className='bg-[#fff] py-4'>
+    <nav className='bg-[#fff] py-4 select-none'>
       <Container>
         <div className='flex items-center'>
           <div>
