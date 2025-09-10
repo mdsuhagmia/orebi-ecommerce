@@ -29,7 +29,7 @@ const Post = ({allPage, filterShow, listView}) => {
         <div>
           <div className={`${listView == "active" ? "w-full" : "w-full flex flex-wrap justify-between"}`}>
             {cateFilterShow.map((item, index) => (
-              <div key={index} className={`shadow-xl bg-gray-200 rounded-[5px] mb-4 ${listView == "active" ? "w-[100%]" : "w-[32%]"}`}>
+              <div key={index} className={`shadow-xl bg-gray-200 rounded-[5px] mb-4 ${listView == "active" ? "w-[100%]" : "w-[49%] md:w-[32%]"}`}>
                 <div className='bg-[#ffffff] py-2 rounded-t-[5px] border-1 border-gray-200 relative group'>
                   <Link to={`/shop/products/${item.id}`} target='_top'>
                     <img src={item.thumbnail} alt="" />
@@ -73,7 +73,7 @@ const Post = ({allPage, filterShow, listView}) => {
         :
         <div className={`${listView == 'active' ? "w-full" : "w-full flex flex-wrap justify-between"}`}>
           {allPage.map((item, index) => (
-            <div key={index} className={`shadow-xl bg-gray-200 rounded-[5px] mb-4 ${listView == 'active' ? "w-[100%]" : "w-[32%]"}`}>
+            <div key={index} className={`shadow-xl bg-gray-200 rounded-[5px] mb-4 ${listView == 'active' ? "w-[100%]" : "w-[49%] md:w-[32%]"}`}>
               <div className='bg-[#ffffff] py-2 rounded-t-[5px] border-1 border-gray-200 relative group'>
                 <Link to={`/shop/products/${item.id}`} target='_top'>
                   <img src={item.thumbnail} alt="" />

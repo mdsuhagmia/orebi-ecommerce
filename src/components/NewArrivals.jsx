@@ -71,7 +71,7 @@ const NewArrivals = () => {
          <Slider {...settings}>
           {data.map((item)=>(
             <div className='px-2 py-6'>
-                <div className='w-full min-h-[300px] md:min-h-[370px] shadow-xl bg-gray-200 rounded-[5px]'>
+                <div className='w-full min-h-[230px] sm:min-h-[300px] md:min-h-[370px] shadow-xl bg-gray-200 rounded-[5px]'>
                   <div className='bg-[#ffffff] py-3 rounded-t-[5px] border-1 border-gray-200 relative group'>
                    <Link to={"/shop"} target='_top' className='flex justify-center'>
                     <img src={item.thumbnail} alt="" className='w-full' />
@@ -97,7 +97,7 @@ const NewArrivals = () => {
                       </div>
                     </div>
                   </div>
-                  <h1 className='font-dms font-bold text-[12px] md:text-[14px] lg:text-[18px] pl-4 pb-8 pt-3'>{item.title}</h1>
+                  <h1 className='font-dms font-bold text-[10px] sm:text-[12px] md:text-[14px] lg:text-[18px] px-2 sm:px-4 pb-8 pt-3'>{item.title}</h1>
                 </div>
             </div>
           ))}

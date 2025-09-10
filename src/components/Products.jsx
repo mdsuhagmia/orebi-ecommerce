@@ -2,7 +2,7 @@ import React, { useContext, useEffect, useRef, useState } from 'react'
 import Container from '../components/Container'
 import { NavLink } from 'react-router-dom'
 import { IoIosArrowForward } from 'react-icons/io'
-import { FaList } from 'react-icons/fa'
+import { FaAngleDown, FaAngleUp, FaList } from 'react-icons/fa'
 import { ApiData } from './ContextApi'
 import Post from './Post'
 import Pagination from './Pagination'
@@ -67,6 +67,19 @@ const Products = () => {
   let handleListView = ()=>{
     setListView("active")
   }
+
+  let [mCate, setMCate] = useState(false)
+  let mCateRef = useRef()
+  useEffect(()=>{
+    document.addEventListener("click", (e)=>{
+      if(mCateRef.current.contains(e.target)){
+        setMCate(!mCate)
+      }else{
+        setMCate(false)
+      }
+    })
+  },[mCate])
+
   return (
     <>
     <section className='py-[54px] md:py-[64px] lg:py-[80px]'>
@@ -137,17 +150,40 @@ const Products = () => {
 
           <div className='w-full md:w-[75%]'>
             <div className='flex items-center justify-between pb-[60px]'>
-              <div className='w-2/5'>
-                <div className='flex items-center gap-6'>
+              <div className=''>
+                <div className='flex items-center gap-3 md:gap-6'>
                   <TfiLayoutGrid2Alt
                     onClick={()=>setListView("")}
-                    className={`cursor-pointer ${listView == "" ? "text-white p-[8px] rounded-[5px] text-3xl bg-blue-500" : "text-black p-[8px] rounded-[5px] text-3xl bg-blue-50" }`} />
+                    className={`cursor-pointer ${listView == "" ? "text-white p-[6px] md:p-[8px] rounded-[5px] text-2xl md:text-3xl bg-blue-500" : "text-black p-[6px] md:p-[8px] rounded-[5px] text-2xl md:text-3xl bg-blue-50" }`} />
                   <FaList 
                     onClick={handleListView}
-                    className={`cursor-pointer ${listView == "active" ? "text-white p-[8px] rounded-[5px] text-3xl bg-blue-500" : "text-black p-[8px] rounded-[5px] text-3xl bg-blue-50" }`} />
+                    className={`cursor-pointer ${listView == "active" ? "text-white p-[6px] md:p-[8px] rounded-[5px] text-2xl md:text-3xl bg-blue-500" : "text-black p-[6px] md:p-[8px] rounded-[5px] text-2xl md:text-3xl bg-blue-50" }`} />
                 </div>
               </div>
-              <div className='hidden lg:block w-2/5'>
+                <div className='block md:hidden relative'>
+                  <div ref={mCateRef} className='flex items-center gap-x-2 cursor-pointer'>
+                    <h4 className='text-[#262626] text-[16px] lg:text-[16px] font-bold font-dms'>Category</h4>
+                    {mCate == true ? <FaAngleUp /> : <FaAngleDown /> }
+                  </div>
+                  {mCate && (
+                    <div className='absolute top-10 left-0 bg-white border-2 border-[#0000004b] shadow-2xl z-[9999] w-42'>
+                    <ul className=''>
+                      <li onClick={() => setFilterShow("")}
+                        className="py-2 hover:bg-gray-200 rounded-[5px] text-[#767676] text-[16px] font-dms font-medium pl-4 cursor-pointer capitalize">
+                        All Products
+                      </li>
+                      {shopCategory.map((item, index) => (
+                        <li key={index}
+                          onClick={() => handleShopCategory(item)}
+                          className={`py-2 hover:bg-gray-200 rounded-[5px] text-[#767676] text-[16px] font-dms font-medium pl-4 cursor-pointer capitalize`}>
+                          {item}
+                        </li>
+                      ))}
+                    </ul>
+                  </div>
+                  )}
+                </div>
+              <div className='hidden md:block'>
                 <div className='flex items-center'>
                   <h6 className='pr-2'>Sort by:</h6>
                   <select name="price" id="price" className='border-1 border-[#00000036] px-4 py-[3px] outline-0 rounded-[3px]'>
@@ -157,7 +193,7 @@ const Products = () => {
                   </select>
                 </div>
               </div>
-              <div className='w-1/5'>
+              <div className=''>
                 <div className='flex items-center justify-end'>
                   <h6 className='pr-2'>Show:</h6>
                   <div className=''>
