@@ -11,7 +11,7 @@ import { TfiLayoutGrid2Alt } from 'react-icons/tfi'
 const Products = () => {
   let data = useContext(ApiData)
 
-  let [perPage, setPerPage] = useState(6)
+  let [perPage, setPerPage] = useState(18)
   let [currentPage, setCurrentPage] = useState(1)
 
   let lastPage = perPage * currentPage
@@ -198,10 +198,9 @@ const Products = () => {
                   <h6 className='pr-2'>Show:</h6>
                   <div className=''>
                     <select onChange={handleParPageShow} name="" id="" className='border-1 border-[#00000036] px-4 py-[3px] outline-0 rounded-[3px]'>
-                      <option value="6">6</option>
-                      <option value="9">9</option>
-                      <option value="12">12</option>
-                      <option value="15">15</option>
+                      <option value="18">18</option>
+                      <option value="30">30</option>
+                      <option value="39">39</option>
                     </select>
                   </div>
                 </div>

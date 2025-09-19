@@ -5,11 +5,6 @@ import { FaFacebookF, FaInstagram, FaLinkedinIn } from 'react-icons/fa'
 import { ApiData } from './ContextApi'
 
 const Footer = () => {
-  let data = useContext(ApiData)
-  let [shopCategory, setShopCategory] = useState([])
-    useEffect(()=>{
-      setShopCategory([...new Set(data.map((item)=>item.category))])
-    }, [data])
 
   return (
     <footer className='bg-[#F5F5F3]'>
@@ -58,11 +53,21 @@ const Footer = () => {
           <div className='w-2/12'>
             <h4 className='text-[#262626] text-[12px] md:text-[16px] lg:text-[16px] font-bold font-dms pb-[8px] md:pb-[17px]'>SHOP</h4>
             <ul>
-              {shopCategory.map((item)=>(
                <li className='text-[#6D6D6D] text-[10px] md:text-[14px] font-normal font-dms pb-[2px] md:pb-[6px] capitalize cursor-pointer'>
-                  {item}
+                Category 1
                </li>
-              ))}
+               <li className='text-[#6D6D6D] text-[10px] md:text-[14px] font-normal font-dms pb-[2px] md:pb-[6px] capitalize cursor-pointer'>
+                Category 2
+               </li>
+               <li className='text-[#6D6D6D] text-[10px] md:text-[14px] font-normal font-dms pb-[2px] md:pb-[6px] capitalize cursor-pointer'>
+                Category 3
+               </li>
+               <li className='text-[#6D6D6D] text-[10px] md:text-[14px] font-normal font-dms pb-[2px] md:pb-[6px] capitalize cursor-pointer'>
+                Category 4
+               </li>
+               <li className='text-[#6D6D6D] text-[10px] md:text-[14px] font-normal font-dms pb-[2px] md:pb-[6px] capitalize cursor-pointer'>
+                Category 5
+               </li>
             </ul>
           </div>
           <div className='w-5/12 ms-auto  md:w-2/12'>
