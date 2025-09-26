@@ -65,8 +65,8 @@ const Header = () => {
 
           <div className="hidden md:block bg-[#262626] py-3 w-[263px] absolute left-0 top-[48px] invisible group-hover:visible opacity-0 group-hover:opacity-100 duration-500 ease-in-out transition-all rounded-b-[5px] z-[9999] overflow-auto max-h-40">
             <ul>
-              {shopCategory.map((item)=>(
-              <li className="py-1 cursor-pointer text-[rgba(255,255,255,0.7)] text-[14px] font-dms font-bold pl-3 hover:text-white hover:pl-6 duration-500 ease-in-out capitalize">
+              {shopCategory.map((item, index)=>(
+              <li className="py-1 cursor-pointer text-[rgba(255,255,255,0.7)] text-[14px] font-dms font-bold pl-3 hover:text-white hover:pl-6 duration-500 ease-in-out capitalize" key={index}>
                 {item}
               </li>
               ))}

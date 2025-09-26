@@ -277,6 +277,9 @@ const SignUp = () => {
                 className='text-[18px] md:text-[16px] font-bold font-dms px-20 py-2 bg-[#262626] text-white rounded-md cursor-pointer hover:bg-[#6e6d6d]'>
                   Login
               </button>
+              <p className="text-md mt-10 text-gray-600">
+              Already have an account? <a href="/login" className="text-blue-500 hover:underline">Back to Login</a>
+            </p>
             </div>
           </div>
         </form>

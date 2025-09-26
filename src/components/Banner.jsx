@@ -21,7 +21,7 @@ const Banner = () => {
       <Slider {...settings} className='ban_bg'>
         <div>
           <a href="/shop">
-            <img src={bg} alt="" lassName='w-full' />
+            <img src={bg} alt="" className='w-full' />
           </a>
         </div>
         <div>

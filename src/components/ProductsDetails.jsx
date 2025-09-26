@@ -1,9 +1,12 @@
 import axios from 'axios'
 import React, { useEffect, useState } from 'react'
-import { NavLink, useParams } from 'react-router-dom'
+import { NavLink, useNavigate, useParams } from 'react-router-dom'
 import Container from './Container'
 import { CiStar } from 'react-icons/ci'
 import { FaMinus, FaPlus, FaShieldAlt, FaShippingFast, FaStar, FaStarHalfAlt } from 'react-icons/fa'
+import { ToastContainer, toast } from 'react-toastify';
+import { useDispatch } from 'react-redux'
+
 
 const ProductsDetails = () => {
   let [singleProduct, setSingleProduct] = useState([])
@@ -44,6 +47,20 @@ const ProductsDetails = () => {
     setShippingShow(!shippingShow)
   }
 
+  let discount = (singleProduct.price * singleProduct.discountPercentage) / 100
+  let mainPrice = singleProduct.price - discount
+
+  let reviewsCount = singleProduct?.reviews?.length || 0;
+
+   let navigate = useNavigate()
+
+  let handleCart = (item)=>{
+    toast.success("Add to cart success!")
+    setTimeout(()=>{
+      navigate("/cart")
+    }, 2000)
+  }
+
   return (
     <section>
       <Container>
@@ -56,11 +73,14 @@ const ProductsDetails = () => {
               {clintRating}
             </div>
             <div className=''>
-              <p className='text-[#767676] text-[16px]'>Review</p>
+              <p className='text-[#767676] text-[16px]'>{reviewsCount} Review</p>
             </div>
           </div>
           <div className='pl-0 lg:pl-16'>
-            <p className='text-[#262626] font-bold pb-4'>Price: <span className='text-[#767676] pl-6'>${singleProduct.price}</span></p>
+            <div className='flex'>
+              <p className='text-[#262626] font-bold pb-4'>Price: <span className='text-[#767676] pl-6 line-through'>${singleProduct.price}</span></p>
+              <p><span className='text-[#262626] pl-6 font-dms font-bold text-[18px]'>${mainPrice.toFixed(2)}</span></p>
+            </div>
             <p className='text-[#262626] font-bold pb-4'>Stock: <span className='text-[#767676] pl-6'>{singleProduct.stock}</span></p>
             <p className='text-[#262626] font-bold pb-4'>Brand: <span className='text-[#767676] pl-6'>{singleProduct.brand}</span></p>
             <p className='text-[#262626] font-bold pb-4'>Weight: <span className='text-[#767676] pl-6'>{singleProduct.weight}</span></p>
@@ -79,10 +99,11 @@ const ProductsDetails = () => {
                   Add to Wish List
                 </button>
               </div>
-              <div>
-                <button className='text-[#262626] text-[14px] font-bold font-dms px-[20px] md:px-[40px] py-[8px] md:py-[16px] border-2 border-[#262626] hover:bg-[#262626] hover:text-white hover:border-2 transition-all duration-300 ease-in-out cursor-pointer rounded-[5px]'>
+              <div >
+                <button onClick={handleCart} className='text-[#262626] text-[14px] font-bold font-dms px-[20px] md:px-[40px] py-[8px] md:py-[16px] border-2 border-[#262626] hover:bg-[#262626] hover:text-white hover:border-2 transition-all duration-300 ease-in-out cursor-pointer rounded-[5px]'>
                   Add to Cart
                 </button>
+                <ToastContainer />
               </div>
             </div>
             <div className='w-full sm:w-2/3 md:w-1/2 lg:w-1/3 py-4'>

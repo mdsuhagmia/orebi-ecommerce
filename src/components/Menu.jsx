@@ -17,7 +17,7 @@ const Menu = () => {
             </a>
           </div>
           <div className="mx-auto">
-            <ul className={`md:flex gap-x-[20px] md:static duration-500 ease-in-out pl-4 md:pl-0 ${openMenu == true ? "absolute top-[56px] left-0 bg-white w-full z-[99999] shadow-2xl md:shadow-none border-t-1 md:border-t-0 border-[#00000058]" : "absolute top-[56px] left-[-770px] w-full bg-white" }`}>
+            <ul className={`md:flex gap-x-[20px] md:static duration-500 ease-in-out pl-4 md:pl-0 ${openMenu == true ? "absolute top-[56px] left-0 bg-white w-full z-[9999] shadow-2xl md:shadow-none border-t-1 md:border-t-0 border-[#00000058]" : "absolute top-[56px] left-[-770px] w-full bg-white" }`}>
               <li className='pb-[2px] md:pb-0 pt-2 md:pt-0'>
                 <NavLink to={"/"} 
                   className={({isActive}) => `text-[14px] font-dms font-bold hover:text-fuchsia-400 ${isActive ? "text-[#262626]" : "text-[#767676]"}`}
