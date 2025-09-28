@@ -5,8 +5,8 @@ import Container from './Container'
 import { CiStar } from 'react-icons/ci'
 import { FaMinus, FaPlus, FaShieldAlt, FaShippingFast, FaStar, FaStarHalfAlt } from 'react-icons/fa'
 import { ToastContainer, toast } from 'react-toastify';
-import { useDispatch } from 'react-redux'
-
+import { useDispatch, useSelector } from 'react-redux'
+import { addToCart } from './slice/productSlice'
 
 const ProductsDetails = () => {
   let [singleProduct, setSingleProduct] = useState([])
@@ -53,8 +53,10 @@ const ProductsDetails = () => {
   let reviewsCount = singleProduct?.reviews?.length || 0;
 
    let navigate = useNavigate()
+   let dispatch = useDispatch()
 
   let handleCart = (item)=>{
+    dispatch(addToCart({...item, qun: 1}))
     toast.success("Add to cart success!")
     setTimeout(()=>{
       navigate("/cart")
@@ -75,6 +77,7 @@ const ProductsDetails = () => {
             <div className=''>
               <p className='text-[#767676] text-[16px]'>{reviewsCount} Review</p>
             </div>
+            <ToastContainer />
           </div>
           <div className='pl-0 lg:pl-16'>
             <div className='flex'>
@@ -100,10 +103,9 @@ const ProductsDetails = () => {
                 </button>
               </div>
               <div >
-                <button onClick={handleCart} className='text-[#262626] text-[14px] font-bold font-dms px-[20px] md:px-[40px] py-[8px] md:py-[16px] border-2 border-[#262626] hover:bg-[#262626] hover:text-white hover:border-2 transition-all duration-300 ease-in-out cursor-pointer rounded-[5px]'>
+                <button onClick={()=>handleCart(singleProduct)} className='text-[#262626] text-[14px] font-bold font-dms px-[20px] md:px-[40px] py-[8px] md:py-[16px] border-2 border-[#262626] hover:bg-[#262626] hover:text-white hover:border-2 transition-all duration-300 ease-in-out cursor-pointer rounded-[5px]'>
                   Add to Cart
                 </button>
-                <ToastContainer />
               </div>
             </div>
             <div className='w-full sm:w-2/3 md:w-1/2 lg:w-1/3 py-4'>

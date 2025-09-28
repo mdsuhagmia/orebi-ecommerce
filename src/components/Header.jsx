@@ -5,6 +5,9 @@ import { FaShoppingCart } from "react-icons/fa";
 import { useContext, useEffect, useRef, useState } from "react";
 import mask from '../assets/mask.png'
 import { ApiData } from "./ContextApi";
+import { useDispatch, useSelector } from "react-redux";
+import { Link, useNavigate } from "react-router-dom";
+import { productRemove } from "./slice/productSlice";
 
 
 const Header = () => {
@@ -38,6 +41,16 @@ const Header = () => {
   useEffect(()=>{
     setShopCategory([...new Set(data.map((item)=>item.category))])
   }, [data])
+
+  let navigate = useNavigate()
+  let handleCart = ()=>{
+    navigate("/cart")
+  }
+
+  let productData = useSelector((item)=>item.product.cartItem)
+  console.log(productData)
+
+  let dispatch = useDispatch()
 
   return (
     <header className="bg-[#F5F5F3] py-4 select-none">
@@ -109,29 +122,38 @@ const Header = () => {
           </div>
           <div>
             <div className="relative" ref={cartRef}>
-              <FaShoppingCart className="cursor-pointer" />
-                {cart &&
+                <div className="relative">
+                  {productData.length > 0 && (
+                    <div className="absolute top-[-16px] left-[8px] bg-gray-400 text-white h-5 w-5 rounded-full text-center leading-5">{productData.length}</div>
+                  )}
+                  <FaShoppingCart className="cursor-pointer" />
+                </div>
+                {productData.length > 0 &&(
+                  <div>
+                    {cart &&
                   <div 
                     className="absolute top-[44px] right-0 bg-white shadow-2xl w-[200px] lg:w-[360px] rounded-b-[5px] z-[9999]">
-                    <div 
-                      className="bg-[#F5F5F3] w-full flex justify-between">
+                    {productData.map((item, index)=>(
+                      <div 
+                      className="bg-[#F5F5F3] w-full flex justify-between border-b-4 border-white">
                       <div className="w-1/4 m-2 lg:m-4">
-                        <img src={mask} alt="" />
+                        <img src={item.thumbnail} alt="" />
                       </div>
                       <div className="w-2/4 m-2 lg:m-4">
-                        <h4 className="text-[#262626] text-[8px] lg:text-[14px] font-bold font-dms pb-[6px] lg:pb-[12px]">Black Smart Watch</h4>
-                        <h5 className="text-[#262626] text-[8px] lg:text-[14px] font-bold font-dms">$44.00</h5>
+                        <h4 className="text-[#262626] text-[8px] lg:text-[14px] font-bold font-dms pb-[6px] lg:pb-[12px]">{item.title}</h4>
+                        <h5 className="text-[#262626] text-[8px] lg:text-[14px] font-bold font-dms">${item.price}</h5>
                       </div>
                       <div className="w-1/4 flex items-center">
                         <IoCloseOutline
-                          className="cursor-pointer text-xl lg:text-2xl" />
+                          className="cursor-pointer text-xl lg:text-2xl" onClick={()=>dispatch(productRemove(index))} />
                       </div>
                     </div>
+                    ))}
                     <div className="m-2 lg:m-4">
                       <h4 className="text-[#262626] text-[14px] font-bold font-dms">Subtotal: $44.00</h4>
                       <div className="flex justify-between">
-                        <div className="w-[48%] py-2 lg:py-4">
-                          <a className="border-1 py-[4px] lg:py-[13px] px-[10px] lg:px-[43px] hover:bg-[#262626] hover:text-white duration-300 ease-in-out text-[#262626] text-[14px] lg:text-[14px] font-bold font-dms hover:border-1 hover:border-[#262626] rounded-[5px]" href="/cart">View Cart</a>
+                        <div className="w-[48%] py-2 lg:py-4" onClick={handleCart}>
+                          <Link className="border-1 py-[4px] lg:py-[13px] px-[10px] lg:px-[43px] hover:bg-[#262626] hover:text-white duration-300 ease-in-out text-[#262626] text-[14px] lg:text-[14px] font-bold font-dms hover:border-1 hover:border-[#262626] rounded-[5px]">View Cart</Link>
                         </div>
                         <div className="w-[48%] py-2 lg:py-4">
                           <a className="border-1 py-[4px] lg:py-[13px] px-[10px] lg:px-[43px] hover:bg-[#262626] hover:text-white duration-300 ease-in-out text-[#262626] text-[14px] lg:text-[14px] font-bold font-dms hover:border-1 hover:border-[#262626] rounded-[5px]" href="/checkout">Checkout</a>
@@ -140,6 +162,8 @@ const Header = () => {
                     </div>
                   </div>
                 }
+                  </div>
+                )}
             </div>
           </div>
         </div>
