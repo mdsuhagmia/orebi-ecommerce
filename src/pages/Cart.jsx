@@ -94,7 +94,7 @@ const Cart = () => {
                   <h4 className='text-[16px] text-[#262626] font-bold font-dms py-2 px-4 border-2 border-[#F0F0F0] border-b-0'>Subtotal:</h4>
                 </div>
                 <div>
-                  <h4 className='text-[16px] text-[#262626] font-bold font-dms py-2 px-4 border-2 border-[#F0F0F0]'>Total Quantity:</h4>
+                  <h4 className='text-[16px] text-[#262626] font-bold font-dms py-2 px-4 border-2 border-[#F0F0F0] border-b-0'>Total Quantity:</h4>
                 </div>
                 <div>
                   <h4 className='text-[16px] text-[#262626] font-bold font-dms py-2 px-4 border-2 border-[#F0F0F0]'>Total:</h4>
@@ -102,13 +102,13 @@ const Cart = () => {
               </div>
               <div className='w-[50%]'>
                 <div>
-                  <h4 className='text-[16px] text-[#262626] font-bold font-dms py-2 px-4 border-2 border-[#F0F0F0] border-b-0'>${totalPrice}</h4>
+                  <h4 className='text-[16px] text-[#262626] font-bold font-dms py-2 px-4 border-2 border-[#F0F0F0] border-b-0'>${totalPrice.toFixed(2)}</h4>
                 </div>
                 <div>
-                  <h4 className='text-[16px] text-[#262626] font-bold font-dms py-2 px-4 border-2 border-[#F0F0F0]'>{totalQuantity}</h4>
+                  <h4 className='text-[16px] text-[#262626] font-bold font-dms py-2 px-4 border-2 border-[#F0F0F0] border-b-0'>{totalQuantity}</h4>
                 </div>
                 <div>
-                  <h4 className='text-[16px] text-[#262626] font-bold font-dms py-2 px-4 border-2 border-[#F0F0F0]'>${totalPrice}</h4>
+                  <h4 className='text-[16px] text-[#262626] font-bold font-dms py-2 px-4 border-2 border-[#F0F0F0]'>${totalPrice.toFixed(2)}</h4>
                 </div>
               </div>
             </div>
@@ -127,7 +127,6 @@ const Cart = () => {
             </Link>
           </div>
           </div> }
-          
       </Container>
     </section>
   )
