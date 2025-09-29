@@ -156,7 +156,7 @@ const Header = () => {
                           <Link className="border-1 py-[4px] lg:py-[13px] px-[10px] lg:px-[43px] hover:bg-[#262626] hover:text-white duration-300 ease-in-out text-[#262626] text-[14px] lg:text-[14px] font-bold font-dms hover:border-1 hover:border-[#262626] rounded-[5px]">View Cart</Link>
                         </div>
                         <div className="w-[48%] py-2 lg:py-4">
-                          <a className="border-1 py-[4px] lg:py-[13px] px-[10px] lg:px-[43px] hover:bg-[#262626] hover:text-white duration-300 ease-in-out text-[#262626] text-[14px] lg:text-[14px] font-bold font-dms hover:border-1 hover:border-[#262626] rounded-[5px]" href="/checkout">Checkout</a>
+                          <Link to={"/checkout"} className="border-1 py-[4px] lg:py-[13px] px-[10px] lg:px-[43px] hover:bg-[#262626] hover:text-white duration-300 ease-in-out text-[#262626] text-[14px] lg:text-[14px] font-bold font-dms hover:border-1 hover:border-[#262626] rounded-[5px]">Checkout</Link>
                         </div>
                       </div>
                     </div>

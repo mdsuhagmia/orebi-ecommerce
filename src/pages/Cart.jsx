@@ -10,6 +10,12 @@ import { decrement, increment, productRemove } from '../components/slice/product
 const Cart = () => {
   let data = useSelector((state)=>state.product.cartItem)
   let dispatch = useDispatch()
+
+  let {totalPrice, totalQuantity} = data.reduce((acce, item)=>{
+    acce.totalPrice += item.price * item.qun
+    acce.totalQuantity += item.qun
+    return acce;
+  },{totalPrice: 0, totalQuantity: 0})
   return (
     <section className='py-16'>
       <Container>
@@ -51,7 +57,7 @@ const Cart = () => {
               <div className='grid grid-cols-5'>
                 <div className='flex items-center gap-x-2 col-span-2'>
                   <div className=''>
-                    <IoClose className='text-2xl cursor-pointer' onClick={()=>dispatch(productRemove(index))} />
+                    <IoClose className='text-2xl cursor-pointer hover:text-red-500' onClick={()=>dispatch(productRemove(index))} />
                   </div>
                   <div className='h-[140px]'>
                     <img src={item.thumbnail} alt="" className='h-full' />
@@ -64,11 +70,11 @@ const Cart = () => {
                   <p>${item.price}</p>
                 </div>
                 <div className='flex items-center gap-x-4'>
-                  <button className='cursor-pointer' onClick={()=>dispatch(decrement(index))}>
-                    <FaMinus />
+                  <button className={`cursor-pointer hover:text-red-600 ${item.qun <= 1 ? "opacity-[0.3]" : "opacity-[1]"}`} onClick={()=>dispatch(decrement(index))}>
+                   <FaMinus />
                   </button>
                   <p className='text-lg font-bold'>{item.qun}</p>
-                  <button className='cursor-pointer' onClick={()=>dispatch(increment(index))}>
+                  <button className='cursor-pointer hover:text-blue-500' onClick={()=>dispatch(increment(index))}>
                     <FaPlus />
                   </button>
                 </div>
@@ -88,20 +94,26 @@ const Cart = () => {
                   <h4 className='text-[16px] text-[#262626] font-bold font-dms py-2 px-4 border-2 border-[#F0F0F0] border-b-0'>Subtotal:</h4>
                 </div>
                 <div>
+                  <h4 className='text-[16px] text-[#262626] font-bold font-dms py-2 px-4 border-2 border-[#F0F0F0]'>Total Quantity:</h4>
+                </div>
+                <div>
                   <h4 className='text-[16px] text-[#262626] font-bold font-dms py-2 px-4 border-2 border-[#F0F0F0]'>Total:</h4>
                 </div>
               </div>
               <div className='w-[50%]'>
                 <div>
-                  <h4 className='text-[16px] text-[#262626] font-bold font-dms py-2 px-4 border-2 border-[#F0F0F0] border-b-0'>$66</h4>
+                  <h4 className='text-[16px] text-[#262626] font-bold font-dms py-2 px-4 border-2 border-[#F0F0F0] border-b-0'>${totalPrice}</h4>
                 </div>
                 <div>
-                  <h4 className='text-[16px] text-[#262626] font-bold font-dms py-2 px-4 border-2 border-[#F0F0F0]'>$66</h4>
+                  <h4 className='text-[16px] text-[#262626] font-bold font-dms py-2 px-4 border-2 border-[#F0F0F0]'>{totalQuantity}</h4>
+                </div>
+                <div>
+                  <h4 className='text-[16px] text-[#262626] font-bold font-dms py-2 px-4 border-2 border-[#F0F0F0]'>${totalPrice}</h4>
                 </div>
               </div>
             </div>
             <div className='text-end pt-6'>
-              <Link className='text-[14px] text-white font-semibold font-dms bg-[#262626] rounded-[5px] px-8 py-3'>
+              <Link to={"/checkout"} target='_top' className='text-[14px] text-white font-semibold font-dms bg-[#262626] rounded-[5px] px-8 py-3'>
                 Proceed to Checkout
               </Link>
             </div>
