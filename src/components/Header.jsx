@@ -48,9 +48,13 @@ const Header = () => {
   }
 
   let productData = useSelector((item)=>item.product.cartItem)
-  console.log(productData)
 
   let dispatch = useDispatch()
+
+  let {totalPrice} = productData.reduce((acce, item)=>{
+    acce.totalPrice += item.price * item.qun
+    return acce;
+  },{totalPrice: 0})
 
   return (
     <header className="bg-[#F5F5F3] py-4 select-none">
@@ -150,7 +154,7 @@ const Header = () => {
                     </div>
                     ))}
                     <div className="m-2 lg:m-4">
-                      <h4 className="text-[#262626] text-[14px] font-bold font-dms">Subtotal: $44.00</h4>
+                      <h4 className="text-[#262626] text-[14px] font-bold font-dms pb-0 md:pb-2">Subtotal: ${totalPrice.toFixed(2)}</h4>
                       <div className="flex justify-between">
                         <div className="w-[48%] py-2 lg:py-4" onClick={handleCart}>
                           <Link className="border-1 py-[4px] lg:py-[13px] px-[10px] lg:px-[43px] hover:bg-[#262626] hover:text-white duration-300 ease-in-out text-[#262626] text-[14px] lg:text-[14px] font-bold font-dms hover:border-1 hover:border-[#262626] rounded-[5px]">View Cart</Link>

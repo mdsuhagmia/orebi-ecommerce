@@ -33,8 +33,8 @@ const Checkout = () => {
           </ul>
         </div>
         <div>
-          <h2 className='pb-16 text-[#262626]'>Have a coupon? <Link className='hover:underline'>Click here to enter your code</Link></h2>
-          <div className='w-1/2'>
+          <h2 className='pb-16 text-[#262626] text-[14px] sm:text-[16px]'>Have a coupon? <Link className='hover:underline'>Click here to enter your code</Link></h2>
+          <div className='w-full md:w-2/3 lg:w-1/2'>
             <h2 className='text-[#262626] text-[39px] font-bold font-dms pb-4'>Billing Details</h2>
             <form action="" className='w-full'>
               <div className='flex items-center justify-between pb-6'>
@@ -147,7 +147,7 @@ const Checkout = () => {
                 />
               </div>
               <div className='pb-6 pt-12'>
-                <h2 htmlFor="" className='block pb-6 text-[#262626] text-[39px] font-semibold font-dms'>Additional Information</h2>
+                <h2 htmlFor="" className='block pb-6 text-[#262626] text-[25px] sm:text-[39px] font-semibold font-dms'>Additional Information</h2>
                 <label htmlFor="" className='block pb-2 text-[#262626] text-[16px] font-semibold font-dms'>Other Notes (optional)</label>
                 <textarea name="message" id="message"
                   className='border-2 border-[#F0F0F0] pl-3 rounded-[5px] outline-0 focus:border-blue-200 h-[138px] w-full pt-4'
@@ -195,9 +195,13 @@ const Checkout = () => {
                   </tbody>
                 </table>
               </div>
-              <div>
+              <div className='flex items-center gap-x-6'>
+                <Link to={"/cart"} 
+                  className='text-md sm:text-2xl text-[#fff] font-bold font-dms bg-[#262626] py-2 px-6 sm:px-12 rounded-[5px] hover:bg-[#262626a8] cursor-pointer'>
+                  Back to Cart
+                </Link>
                 <button type='submit'
-                  className='text-2xl text-[#fff] font-bold font-dms bg-[#262626] py-2 px-12 rounded-[5px] hover:bg-[#262626a8] cursor-pointer'>
+                  className='text-md sm:text-2xl text-[#fff] font-bold font-dms bg-[#262626] py-2 px-6 sm:px-12 rounded-[5px] hover:bg-[#262626a8] cursor-pointer'>
                   Submit
                 </button>
               </div>

@@ -6,6 +6,7 @@ import { useDispatch, useSelector } from 'react-redux'
 import { IoClose } from 'react-icons/io5'
 import { FaMinus, FaPlus } from 'react-icons/fa'
 import { decrement, increment, productRemove } from '../components/slice/productSlice'
+import { MdDeleteForever } from 'react-icons/md'
 
 const Cart = () => {
   let data = useSelector((state)=>state.product.cartItem)
@@ -37,54 +38,83 @@ const Cart = () => {
             </li>
           </ul>
         </div>
-      {data.map((item, index) => (
-        <div className=''>
-          <div className='bg-[#F5F5F3] rounded-t-[5px] grid grid-cols-5 pl-4'>
-            <div className='col-span-2'>
-              <h2 className='text-[#262626] text-[16px] font-bold font-dms py-3'>Product</h2>
-            </div>
-            <div>
-              <h2 className='text-[#262626] text-[16px] font-bold font-dms py-3'>Price</h2>
-            </div>
-            <div>
-              <h2 className='text-[#262626] text-[16px] font-bold font-dms py-3'>Quantity</h2>
-            </div>
-            <div>
-              <h2 className='text-[#262626] text-[16px] font-bold font-dms py-3'>Total</h2>
-            </div>
-          </div>
-            <div className='border-2 border-[#F0F0F0] py-4 pl-4 mb-8'>
-              <div className='grid grid-cols-5'>
-                <div className='flex items-center gap-x-2 col-span-2'>
-                  <div className=''>
-                    <IoClose className='text-2xl cursor-pointer hover:text-red-500' onClick={()=>dispatch(productRemove(index))} />
-                  </div>
-                  <div className='h-[140px]'>
-                    <img src={item.thumbnail} alt="" className='h-full' />
-                  </div>
-                  <div className=''>
-                   <h2>{item.title}</h2>
-                  </div>
+        {data.map((item, index) => (
+          <div className=''>
+            <div className='hidden md:block'>
+              <div className='bg-[#F5F5F3] rounded-t-[5px] grid grid-cols-5 pl-4'>
+                <div className='col-span-2'>
+                  <h2 className='text-[#262626] text-[16px] font-bold font-dms py-3'>Product</h2>
                 </div>
-                <div className='flex items-center'>
-                  <p>${item.price}</p>
+                <div>
+                  <h2 className='text-[#262626] text-[16px] font-bold font-dms py-3'>Price</h2>
                 </div>
-                <div className='flex items-center gap-x-4'>
-                  <button className={`cursor-pointer hover:text-red-600 ${item.qun <= 1 ? "opacity-[0.3]" : "opacity-[1]"}`} onClick={()=>dispatch(decrement(index))}>
-                   <FaMinus />
-                  </button>
-                  <p className='text-lg font-bold'>{item.qun}</p>
-                  <button className='cursor-pointer hover:text-blue-500' onClick={()=>dispatch(increment(index))}>
-                    <FaPlus />
-                  </button>
+                <div>
+                  <h2 className='text-[#262626] text-[16px] font-bold font-dms py-3'>Quantity</h2>
                 </div>
-                <div className='flex items-center'>
-                  <p>${(item.price * item.qun).toFixed(2)}</p>
+                <div>
+                  <h2 className='text-[#262626] text-[16px] font-bold font-dms py-3'>Total</h2>
                 </div>
               </div>
             </div>
-        </div>
-          ))}
+            <div className='border-2 border-[#F0F0F0] py-4 pl-4 mb-8'>
+              <div className='hidden md:block'>
+                <div className='grid grid-cols-5'>
+                  <div className='flex items-center gap-x-2 col-span-2'>
+                    <div className=''>
+                      <IoClose className='text-2xl cursor-pointer hover:text-red-500' onClick={() => dispatch(productRemove(index))} />
+                    </div>
+                    <div className='h-[140px]'>
+                      <img src={item.thumbnail} alt="" className='h-full' />
+                    </div>
+                    <div className=''>
+                      <h2>{item.title}</h2>
+                    </div>
+                  </div>
+                  <div className='flex items-center'>
+                    <p>${item.price}</p>
+                  </div>
+                  <div className='flex items-center gap-x-4'>
+                    <button className={`cursor-pointer hover:text-red-600 ${item.qun <= 1 ? "opacity-[0.3]" : "opacity-[1]"}`} onClick={() => dispatch(decrement(index))}>
+                      <FaMinus />
+                    </button>
+                    <p className='text-lg font-bold'>{item.qun}</p>
+                    <button className='cursor-pointer hover:text-blue-500' onClick={() => dispatch(increment(index))}>
+                      <FaPlus />
+                    </button>
+                  </div>
+                  <div className='flex items-center'>
+                    <p>${(item.price * item.qun).toFixed(2)}</p>
+                  </div>
+                </div>
+              </div>
+              <div className='block md:hidden relative'>
+                <div className='grid grid-cols-3 max-h-[90px]'>
+                  <div className='h-[70px]'>
+                    <img src={item.thumbnail} alt="" className='h-full' />
+                  </div>
+                  <div className='col-span-2'>
+                    <h2 className='font-semibold text-[#262626] pb-2'>{item.title}</h2>
+                    <div className='flex items-center justify-between pr-2'>
+                      <p>${(item.price * item.qun).toFixed(2)}</p>
+                      <div className='flex items-center gap-x-2'>
+                        <button className={`cursor-pointer hover:text-red-600 ${item.qun <= 1 ? "opacity-[0.3]" : "opacity-[1]"}`} onClick={() => dispatch(decrement(index))}>
+                          <FaMinus />
+                        </button>
+                        <p className='text-lg font-bold'>{item.qun}</p>
+                        <button className='cursor-pointer hover:text-blue-500' onClick={() => dispatch(increment(index))}>
+                          <FaPlus />
+                        </button>
+                      </div>
+                      <div className=''>
+                        <MdDeleteForever className='text-2xl cursor-pointer hover:text-red-500' onClick={() => dispatch(productRemove(index))} />
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        ))}
           {data.length > 0 && (
           <div>
             <h2 className='text-end pb-2 text-[20px] text-[#262626] font-bold font-dms'>Cart totals</h2>

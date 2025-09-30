@@ -69,17 +69,15 @@ const Products = () => {
   }
 
   const [mCate, setMCate] = useState(false);
-  const mCateRef = useRef(null);
+  const mCateRef = useRef();
   useEffect(() => {
-    const handleClickOutside = (e) => {
-      if (mCateRef.current && !mCateRef.current.contains(e.target)) {
-        setMCate(false);
+    document.addEventListener("click", ((e)=>{
+      if (mCateRef.current.contains(e.target)) {
+        setMCate(!mCate);
+      }else{
+        setMCate(false)
       }
-    };
-    document.addEventListener("mousedown", handleClickOutside);
-    return () => {
-      document.removeEventListener("mousedown", handleClickOutside);
-    };
+    }))
   }, []);
 
   let [low, setLow] = useState({})
@@ -209,7 +207,6 @@ const Products = () => {
                   <div
                     ref={mCateRef}
                     className="flex items-center gap-x-2 cursor-pointer"
-                    onClick={() => setMCate(!mCate)}
                   >
                     <h4 className="text-[#262626] text-[16px] font-bold font-dms">
                       Category

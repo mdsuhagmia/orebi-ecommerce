@@ -55,7 +55,9 @@ const Post = ({allPage, filterShow, listView}) => {
                     </div>
                   </div>
                 </div>
-                <h1 className='font-dms font-bold text-[12px] md:text-[16px] lg:text-[18px] pl-4 py-3'>{item.title}</h1>
+                <Link to={`/shop/products/${item.id}`} target='_top'>
+                  <h1 className='font-dms font-bold text-[12px] md:text-[16px] lg:text-[18px] pl-4 py-3 hover:underline'>{item.title}</h1>
+                </Link>
                 <h4 className='text-red-600 pl-4 pb-3'>Price: {item.price}$</h4>
                 <h4 className='text-black pl-4 pb-3'>Stock: {item.stock}</h4>
               </div>
@@ -99,7 +101,9 @@ const Post = ({allPage, filterShow, listView}) => {
                   </div>
                 </div>
               </div>
-              <h1 className='font-dms font-bold text-[12px] md:text-[16px] lg:text-[18px] pl-4 py-3'>{item.title}</h1>
+              <Link to={`/shop/products/${item.id}`} target='_top'>
+                <h1 className='font-dms font-bold text-[12px] md:text-[16px] lg:text-[18px] pl-4 py-3 hover:underline'>{item.title}</h1>
+              </Link>
               <h4 className='text-red-600 pl-4 pb-3'>Price: {item.price}$</h4>
               <h4 className='text-black pl-4 pb-3'>Stock: {item.stock}</h4>
             </div>
