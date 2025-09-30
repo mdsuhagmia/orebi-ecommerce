@@ -67,11 +67,11 @@ const Cart = () => {
                       <img src={item.thumbnail} alt="" className='h-full' />
                     </div>
                     <div className=''>
-                      <h2>{item.title}</h2>
+                      <h2 className='text-[#262626] font-dms font-semibold'>{item.title}</h2>
                     </div>
                   </div>
                   <div className='flex items-center'>
-                    <p>${item.price}</p>
+                    <p className='text-[#262626] font-dms font-semibold'>${item.price}</p>
                   </div>
                   <div className='flex items-center gap-x-4'>
                     <button className={`cursor-pointer hover:text-red-600 ${item.qun <= 1 ? "opacity-[0.3]" : "opacity-[1]"}`} onClick={() => dispatch(decrement(index))}>
@@ -82,7 +82,7 @@ const Cart = () => {
                       <FaPlus />
                     </button>
                   </div>
-                  <div className='flex items-center'>
+                  <div className='flex items-center text-[#262626] font-dms font-semibold'>
                     <p>${(item.price * item.qun).toFixed(2)}</p>
                   </div>
                 </div>
